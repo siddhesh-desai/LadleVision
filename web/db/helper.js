@@ -1,5 +1,6 @@
 import { pool } from "./database.js";
 
+// give the latest information about a ladle
 export async function getLatestLadleInformation(ladleId) {
   const [rows] = await pool.query(`
     SELECT l.id AS ladleId, l.stillGrade, l.makeYear, l.expiry, f.temp, f.loc, f.created

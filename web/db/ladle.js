@@ -16,8 +16,6 @@ export async function getLadle(id) {
   );
   return rows[0];
 }
-//   const note = await getNote(1)
-//   console.log(note)
 
 export async function createLadle(stillGrade, makeYear, expiry) {
   const [result] = await pool.query(
@@ -56,13 +54,3 @@ export async function deleteLadle(id) {
 
     return result;
 }
-// const test = async () => {
-//   try {
-//     const ladles = await getAllLadles();
-//     console.log(ladles);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-// test();

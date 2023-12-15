@@ -3,7 +3,6 @@ import { addLadel, deleteLadleByID, fetchAllLadle, fetchLadleByID, fetchLatestIn
 
 const router = express.Router();
 
-// Import your ladle-related functions
 
 // Route to add a ladle
 router.post("/", addLadel);

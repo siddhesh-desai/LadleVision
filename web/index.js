@@ -12,10 +12,10 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 
 // Ladels route
-app.use("/ladles", ladleRouter);
+app.use("/api/ladles", ladleRouter);
 
 // Frame route
-app.use("/frames", frameRouter);
+app.use("/api/frames", frameRouter);
 
 
 app.listen(port, console.log(`Listening on port ${port}`));
