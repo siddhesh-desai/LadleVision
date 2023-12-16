@@ -6,6 +6,7 @@ import ladleRouter from "./routes/ladles.js"
 import frameRouter from "./routes/frame.js"
 import authRouter from "./routes/auth.js"
 import { requireAdminAuth, requireUserAuth } from "./middleware/auth.js";
+import adminRouter from "./routes/admin.js";
 
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static('public'));
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
@@ -39,6 +41,9 @@ app.use("/ladles", ladleRouter);
 
 // Frame route
 app.use("/frames", frameRouter);
+
+// Admin route
+app.use("/admin", adminRouter);
 
 
 app.listen(port, console.log(`Listening on port ${port}`));

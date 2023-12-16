@@ -1,75 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        #login-form {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-
-        #submit-btn {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        #toast-message {
-            /* display: none; */
-            background-color: #4caf50;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1;
-        }
-    </style>
+<title>LadleVision</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="/css/auth.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
 </head>
 <body>
-
-<div id="toast-message">Login successful!</div>
-
-<div id="login-form">
-    <h2>Login</h2>
-    <form method="post" action="/auth/login">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit" id="submit-btn" >Login</button>
-    </form>
-</div>
-
+	<!-- main -->
+    <section class="header">
+        <div class="logo">
+            <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+            <h2>Ladle<span>Vision</span></h2>
+        </div> 
+    </section>
+	<div class="main-w3layouts wrapper">
+		<% if(message) {%>
+			<div class="message"><%=message%></div>
+		<% } %>
+		<div class="main-agileinfo">
+            <h1>Login</h1>
+			<div class="agileits-top">
+				<form action="/auth/login" method="post">
+					<input class="text email" type="email" name="email" placeholder="Email" required="">
+					<input class="text" type="password" name="password" placeholder="Password" required="">
+					<input type="submit" value="LOGIN">
+				</form>
+				<p>Don't have an Account? <a href="/register"> Create Account!</a></p>
+			</div>
+		</div>
+	</div>
+	<!-- //main -->
 </body>
 </html>
