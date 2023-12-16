@@ -12,6 +12,7 @@ def trackLadle(video, callback):
 
     # Add start time
     # ans = [ladlenumber, timestamp, location, temperature]
+
     width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
     n_frames = 2
