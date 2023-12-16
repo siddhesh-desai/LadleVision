@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload and Display</title>
+</head>
+<body>
+    <h1>Image Upload and Display</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose an image:</label>
+        <input type="file" name="file" id="file" accept=".png, .jpg, .jpeg, .gif" required>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if filename %}
+        <h2>Uploaded Image:</h2>
+<!--        <img src="{{ filename }}" alt="Uploaded Image">-->
+        <img src="../uploads/output.png" alt="Uploaded Image" style="width:100%">
+    {% endif %}
+</body>
+</html>
