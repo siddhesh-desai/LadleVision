@@ -28,16 +28,17 @@ app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.get("/", (req, res) => res.render("home"))
 app.get("/login", (req, res) => res.render("login", {message: null}))
 app.get("/register", (req, res) => res.render("register", {message: null}))
 
 app.get("/protected", requireAdminAuth, (req, res) => res.render("protected"))
 
-app.get("/dashboard", (req, res) => res.render("dashboard"))
-app.get("/allLadles", (req, res) => res.render("allLadles"))
-app.get("/oneLadle", (req, res) => res.render("oneLadle"))
-app.get("/alert", getLadlesNeedInspection)
+app.get("/dashboard",requireAdminAuth,(req, res) => res.render("dashboard"))
+
+app.get("/oneLadle", requireAdminAuth,(req, res) => res.render("oneLadle"))
+app.get("/alert", requireAdminAuth,getLadlesNeedInspection)
 
 
 // Auth route

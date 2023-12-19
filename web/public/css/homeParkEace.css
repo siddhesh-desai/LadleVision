@@ -13,7 +13,7 @@
     --primary-text-color : #183b56;
     --secondary-text-color : #577592;
     /* --accent-color:#2294ed; */
-    --accent-color:green;
+    --accent-color:#539e43;
     --accent-color-dark:#1d69a3;
     --padding-inline-section :20px;
 }
@@ -70,7 +70,7 @@ ul{
 
  /* Top Banner  */
 .top-banner{
-    background-image: url(asset\ 32.png);
+    background-image: url(../images/asset\ 32.png);
     background-color: #e74694;
     /* background-color: green; */
     background-size: 20%;
@@ -143,7 +143,7 @@ ul{
 
 .header-section{
     justify-content: center;
-    gap: 11%;
+    gap: 15%;
 }
 
 .header-right img{

@@ -1,5 +1,5 @@
 import express from "express";
-import { addLadel, deleteLadleByID, doInspection, fetchAllLadle, fetchCurrentLocationOfAllLadles, fetchLadleByID, fetchLatestInfoOfLadleByID, getLadlesNeedInspection, renderSingleLadlePage, updateLadleByID } from "../controller/ladle.js";
+import { addLadel, deleteLadleByID, doInspection, fetchAllLadle, fetchCurrentLocationOfAllLadles, fetchLadleByID, fetchLatestInfoOfLadleByID, getLadlesNeedInspection, renderAllLadles, renderSingleLadlePage, updateLadleByID } from "../controller/ladle.js";
 
 const router = express.Router();
 
@@ -9,6 +9,10 @@ router.post("/", addLadel);
 
 // Route to get all ladles
 router.get("/", fetchAllLadle);
+
+router.get("/maintanance",(req,res)=>res.render("maintanance"))
+
+router.get("/allLadles",renderAllLadles)
 
 router.get("/inspection", getLadlesNeedInspection)
 
@@ -28,6 +32,7 @@ router.delete("/:id", deleteLadleByID);
 router.get("/latest/location/all", fetchCurrentLocationOfAllLadles)
 // Route to get latest information about a ladle by ID
 router.get("/latest/:id", fetchLatestInfoOfLadleByID)
+
 
 
 export default router;

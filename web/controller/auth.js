@@ -28,7 +28,7 @@ export const register_post = async (req, res) => {
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         // return res.status(201).json({ data: { user: result, token }, success: true, message:"Register Successfully" });
         // return res.render( {success: true, message:"Register Successfully" });
-        return res.redirect("/protected")
+        return res.redirect("/dashboard")
     } catch (err) {
         console.error(err)
         // return res.status(500).json({ success: false, message: "Something went wrong",  data:null});
@@ -47,7 +47,7 @@ export const login_post = async (req, res) => {
             const token = createUserToken(email);
             res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
             // return res.status(200).json({ data: { user, token }, success: true, message:"Login Succesfully" });
-            res.redirect("/protected")
+            res.redirect("/dashboard")
 
         }
     } catch (err) {

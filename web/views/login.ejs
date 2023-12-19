@@ -11,15 +11,53 @@
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 <!-- //web font -->
+<link href="/css/homeParkEace.css" rel="stylesheet" type="text/css" media="all" />
+<style>
+	.main-nav {
+        justify-content: space-between;
+        margin-top: 1rem;
+        margin-right: 3rem;
+    }
+    .banner-text {
+      color: #ffffff;
+      padding: 0.9rem 0.8rem;
+      margin-left: 2.4rem;
+  }
+  .small-bold-text {
+    font-size: 1rem;
+    font-weight: bold;
+}
+</style>
+
 </head>
 <body>
 	<!-- main -->
-    <section class="header">
-        <div class="logo">
-            <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
-            <h2>Ladle<span>Vision</span></h2>
-        </div> 
-    </section>
+    <!-- Top Banner Section  -->
+    <!-- <section class="top-banner">
+		<div class="container">
+		  <div class="small-bold-text banner-text text-center">
+			📣 Revolutionizing Ladle Tracking: Precision through Image Vision Processing and Real-Time Analytics for Optimal Management and Predictive Maintenance!
+		  </div>
+		</div>
+	  </section> -->
+  
+	  <!-- Navbar  -->
+	  <nav>
+		<div class="container main-nav flex">
+		  <a href="/" class="company-logo">
+			<img src="/images/Ladle_Vision_Logo.png" alt="Company Logo" />
+		  </a>
+		  <div class="nav-links">
+			<!-- ShortCut ul>li*6>a  -->
+			<ul class="flex">
+			  <li><a href="#" class="hover-links">Technical Data</a></li>
+			  <li><a href="#" class="hover-links">Safety</a></li>
+			  <li><a href="/login" class="hover-links secondaryBtn" style="width: 5rem;">Sign In</a></li>
+			  <li><a href="/register" class="hover-links primaryBtn" style="width: 6rem;">Sign Up</a></li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
 	<div class="main-w3layouts wrapper">
 		<% if(message) {%>
 			<div class="message"><%=message%></div>

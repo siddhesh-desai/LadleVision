@@ -179,3 +179,25 @@ export const doInspection =  async (req, res) => {
         res.redirect("login");
     }
 };
+
+export const renderAllLadles = async (req, res) => {
+    try {
+        // Call the getAllLadles function to retrieve all ladles
+        const ladles = await getAllLadles();
+
+        // Send a success response with the ladles
+        res.status(200).render("allLadles",{
+            success: true,
+            message: 'Ladles retrieved successfully.',
+            data: ladles
+        });
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error("Error getting ladles:", error);
+        res.status(500).render("allLadles",{
+            success: false,
+            message: 'Internal Server Error',
+            data: null
+        });
+    }
+}
