@@ -17,14 +17,15 @@ export async function getLatestLadleInformation(LadleNo) {
 // Get the current location of all ladles
 export async function getCurrentLocationOfAllLadles() {
   const [rows] = await pool.query(`
-    SELECT l.LadleNo, l.SteelGrade, f.Location
-    FROM ladle l
-    LEFT JOIN frame f ON l.LadleNo = f.LadleNo
-    WHERE f.TimeDetected = (
-      SELECT MAX(TimeDetected)
-      FROM frame
-      WHERE LadleNo = l.LadleNo
-    )
+    SELECT l.LadleNo, MAX(f.Location) AS Location
+FROM ladle l
+LEFT JOIN frame f ON l.LadleNo = f.LadleNo
+WHERE f.TimeDetected = (
+  SELECT MAX(TimeDetected)
+  FROM frame
+  WHERE LadleNo = l.LadleNo
+)
+GROUP BY l.LadleNo;
   `);
 
   return rows;

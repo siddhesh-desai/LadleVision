@@ -18,3 +18,5 @@ scikit-image==0.19.3
 lap==0.4.0
 pytesseract~=0.3.10
 easyocr~=1.7.1
+flask~=3.0.0
+mysql~=0.0.3
