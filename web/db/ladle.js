@@ -1,56 +1,58 @@
 import { pool } from "./database.js";
 
 export async function getAllLadles() {
-  const [rows] = await pool.query("select * from ladle");
+  const [rows] = await pool.query("SELECT * FROM ladle");
   return rows;
 }
 
-export async function getLadle(id) {
+export async function getLadle(LadleNo) {
   const [rows] = await pool.query(
     `
     SELECT * 
     FROM ladle
-    WHERE id = ?
+    WHERE LadleNo = ?
     `,
-    [id]
+    [LadleNo]
   );
   return rows[0];
 }
 
-export async function createLadle(stillGrade, makeYear, expiry) {
+export async function createLadle(SteelGrade, ManufYear) {
   const [result] = await pool.query(
     `
-    INSERT INTO ladle (stillGrade, makeYear, expiry)
-    VALUES (?, ?, ?)
+    INSERT INTO ladle (SteelGrade, ManufYear)
+    VALUES (?, ?)
     `,
-    [stillGrade, makeYear, expiry]
+    [SteelGrade, ManufYear]
   );
 
-  const ladle = getLadle(result.insertId)
+  const ladle = await getLadle(result.insertId);
 
   return ladle;
 }
 
-export async function updateLadle(id, stillGrade, makeYear, expiry) {
+export async function updateLadle(LadleNo, SteelGrade, ManufYear, LastCheckDate) {
   const [result] = await pool.query(
     `
     UPDATE ladle
-    SET stillGrade = ?, makeYear = ?, expiry = ?
-    WHERE id = ?
+    SET SteelGrade = ?, ManufYear = ?, LastCheckDate = ?
+    WHERE LadleNo = ?
     `,
-    [stillGrade, makeYear, expiry, id]
+    [SteelGrade, ManufYear, LastCheckDate, LadleNo]
   );
 
-  const ladle = getLadle(id)
+  const ladle = await getLadle(LadleNo);
 
   return ladle;
 }
 
-export async function deleteLadle(id) {
-    const [result] = await pool.query(`
+export async function deleteLadle(LadleNo) {
+  const [result] = await pool.query(`
     DELETE FROM ladle
-    WHERE id = ?
-    `, [id]);
+    WHERE LadleNo = ?
+  `, [LadleNo]);
 
-    return result;
+  return result;
 }
+
+

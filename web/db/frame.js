@@ -5,25 +5,25 @@ export async function getAllFrames() {
   return rows;
 }
 
-export async function getFrame(id) {
+export async function getFrame(FrameId) {
   const [rows] = await pool.query(
     `
     SELECT * 
     FROM frame
-    WHERE id = ?
+    WHERE FrameId = ?
     `,
-    [id]
+    [FrameId]
   );
   return rows[0];
 }
 
-export async function createFrame(ladleno, temp, loc) {
+export async function createFrame(LadleNo, Temperature, Location) {
   const [result] = await pool.query(
     `
-    INSERT INTO frame (ladleno, temp, loc)
+    INSERT INTO frame (LadleNo, Temperature, Location)
     VALUES (?, ?, ?)
     `,
-    [ladleno, temp, loc]
+    [LadleNo, Temperature, Location]
   );
 
   const frame = await getFrame(result.insertId);
@@ -31,26 +31,26 @@ export async function createFrame(ladleno, temp, loc) {
   return frame;
 }
 
-export async function updateFrame(id, ladleno, temp, loc) {
+export async function updateFrame(FrameId, LadleNo, Temperature, Location) {
   const [result] = await pool.query(
     `
     UPDATE frame
-    SET ladleno = ?, temp = ?, loc = ?
-    WHERE id = ?
+    SET LadleNo = ?, Temperature = ?, Location = ?
+    WHERE FrameId = ?
     `,
-    [ladleno, temp, loc, id]
+    [LadleNo, Temperature, Location, FrameId]
   );
 
-  const frame = await getFrame(id);
+  const frame = await getFrame(FrameId);
 
   return frame;
 }
 
-export async function deleteFrame(id) {
+export async function deleteFrame(FrameId) {
   const [result] = await pool.query(`
     DELETE FROM frame
-    WHERE id = ?
-  `, [id]);
+    WHERE FrameId = ?
+  `, [FrameId]);
 
   return result;
 }

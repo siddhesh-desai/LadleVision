@@ -1,16 +1,31 @@
 import { pool } from "./database.js";
 
-// give the latest information about a ladle
-export async function getLatestLadleInformation(ladleId) {
+// Give the latest information about a ladle
+export async function getLatestLadleInformation(LadleNo) {
   const [rows] = await pool.query(`
-    SELECT l.id AS ladleId, l.stillGrade, l.makeYear, l.expiry, f.temp, f.loc, f.created
+    SELECT l.LadleNo, l.SteelGrade, l.ManufYear, l.LastCheckDate, f.Temperature, f.Location, f.TimeDetected
     FROM ladle l
-    LEFT JOIN frame f ON l.id = f.ladleno
-    WHERE l.id = ?
-    ORDER BY f.created DESC
+    LEFT JOIN frame f ON l.LadleNo = f.LadleNo
+    WHERE l.LadleNo = ?
+    ORDER BY f.TimeDetected DESC
     LIMIT 1
-  `, [ladleId]);
+  `, [LadleNo]);
 
   return rows[0];
 }
 
+// Get the current location of all ladles
+export async function getCurrentLocationOfAllLadles() {
+  const [rows] = await pool.query(`
+    SELECT l.LadleNo, l.SteelGrade, f.Location
+    FROM ladle l
+    LEFT JOIN frame f ON l.LadleNo = f.LadleNo
+    WHERE f.TimeDetected = (
+      SELECT MAX(TimeDetected)
+      FROM frame
+      WHERE LadleNo = l.LadleNo
+    )
+  `);
+
+  return rows;
+}

@@ -6,6 +6,8 @@ import ladleRouter from "./routes/ladles.js"
 import frameRouter from "./routes/frame.js"
 import authRouter from "./routes/auth.js"
 import { requireAdminAuth, requireUserAuth } from "./middleware/auth.js";
+import adminRouter from "./routes/admin.js";
+import { getLadlesNeedInspection } from "./controller/ladle.js";
 
 
 dotenv.config();
@@ -20,6 +22,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static('public'));
 // support parsing of application/json type post data
 app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
@@ -31,6 +34,12 @@ app.get("/register", (req, res) => res.render("register", {message: null}))
 
 app.get("/protected", requireAdminAuth, (req, res) => res.render("protected"))
 
+app.get("/dashboard", (req, res) => res.render("dashboard"))
+app.get("/allLadles", (req, res) => res.render("allLadles"))
+app.get("/oneLadle", (req, res) => res.render("oneLadle"))
+app.get("/alert", getLadlesNeedInspection)
+
+
 // Auth route
 app.use("/auth", authRouter);
 
@@ -39,6 +48,9 @@ app.use("/ladles", ladleRouter);
 
 // Frame route
 app.use("/frames", frameRouter);
+
+// Admin route
+app.use("/admin", adminRouter);
 
 
 app.listen(port, console.log(`Listening on port ${port}`));
