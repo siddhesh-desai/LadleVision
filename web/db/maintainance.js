@@ -1,19 +1,5 @@
 import { pool } from './database.js';
 
-// export async function addMaintenanceRecord(LadleNo, WorkerEmail) {
-//     try {
-//         const result = await pool.query(`
-//             INSERT INTO maintenance (LadleNo, WorkerEmail)
-//             VALUES (?, ?)
-//         `, [LadleNo, WorkerEmail]);
-
-//         return result;
-//     } catch (error) {
-//         console.error("Error adding maintenance record:", error);
-//         throw error;
-//     }
-// }
-
 export async function addMaintenanceRecord(LadleNo, WorkerEmail) {
     try {
         // Update LastCheckDate in the ladle table
@@ -36,6 +22,16 @@ export async function addMaintenanceRecord(LadleNo, WorkerEmail) {
         return result;
     } catch (error) {
         console.error("Error adding maintenance record:", error);
+        throw error;
+    }
+}
+
+export async function getAllMaintenanceRecords() {
+    try {
+        const result = await pool.query('SELECT * FROM maintenance');
+        return result[0]; // Assuming result is an array where index 0 contains the rows
+    } catch (error) {
+        console.error("Error fetching maintenance records:", error);
         throw error;
     }
 }

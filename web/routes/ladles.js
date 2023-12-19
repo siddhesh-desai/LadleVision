@@ -1,5 +1,7 @@
 import express from "express";
 import { addLadel, deleteLadleByID, doInspection, fetchAllLadle, fetchCurrentLocationOfAllLadles, fetchLadleByID, fetchLatestInfoOfLadleByID, getLadlesNeedInspection, renderSingleLadlePage, updateLadleByID } from "../controller/ladle.js";
+import { getAllMaintenanceRecords } from "../db/maintainance.js";
+import { renderAllMaintenance } from "../controller/maintainance.js";
 
 const router = express.Router();
 
@@ -13,6 +15,8 @@ router.get("/", fetchAllLadle);
 router.get("/inspection", getLadlesNeedInspection)
 
 router.get("/inspect/:id", doInspection)
+
+router.get("/maintainance", renderAllMaintenance)
 
 // Route to get ladle by ID
 router.get("/:id", fetchLadleByID);

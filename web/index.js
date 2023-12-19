@@ -38,7 +38,7 @@ app.get("/dashboard", (req, res) => res.render("dashboard"))
 app.get("/allLadles", (req, res) => res.render("allLadles"))
 app.get("/oneLadle", (req, res) => res.render("oneLadle"))
 app.get("/alert", getLadlesNeedInspection)
-
+app.get("/maintanance", (req, res) => res.render("maintanance"))
 
 // Auth route
 app.use("/auth", authRouter);

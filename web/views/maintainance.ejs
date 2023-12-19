@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ladle.css">
+    <link rel="stylesheet" href="/css/allLadles.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     
     <title>Admin | Home</title>
@@ -183,41 +183,40 @@
             </ul>
           </div>
         <div class="main--content">
-            <div class="overview">
+          <div class="overview">
+              <% if(success) {%>
                 <div class="title">
                     <h2 class="section--title">Ladle Details</h2>
                     
                 </div>
                 <br>
-                
+                <% if(data.length > 0) {%>
                 <div class="table">
                     <table>
                       <thead>
                         <tr>
-                          <th>Ladle Id</th>
+                          <th>Ladle No.</th>
+                          <th>Maintain By</th>
                           <th>Maintainance Date</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <% for(let i=0; i<data.length; i++) {%>
                         <tr>
-                          <td>1</td>
-                          <td>31 Dec 2023</td>
+                            <td><%=data[i].LadleNo%></td>
+                            <td><%=data[i].WorkerEmail%></td>
+                            <td><%=data[i].CheckDate%></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>31 Dec 2023</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>31 Dec 2023</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>31 Dec 2023</td>
-                        </tr>
+                        <% } %>
                       </tbody>
                     </table>
-                  </div>  
+                  </div> 
+                  <% } else { %> 
+                    <p>Currently, No record for maintainance exist.</p>
+                    <% } %>
+                  <% } else {%>
+                    <p><%=message%></p>
+                    <% } %>
             </div>
             <!-- <br> -->
             
