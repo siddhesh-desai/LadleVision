@@ -33,6 +33,10 @@ app.get("/register", (req, res) => res.render("register", {message: null}))
 
 app.get("/protected", requireAdminAuth, (req, res) => res.render("protected"))
 
+app.get("/dashboard", (req, res) => res.render("dashboard"))
+app.get("/allLadles", (req, res) => res.render("allLadles"))
+app.get("/oneLadle", (req, res) => res.render("oneLadle"))
+
 // Auth route
 app.use("/auth", authRouter);
 

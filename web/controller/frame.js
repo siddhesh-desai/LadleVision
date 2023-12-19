@@ -2,8 +2,8 @@ import { createFrame, getAllFrames, getFrame, updateFrame, deleteFrame } from ".
 
 export const addFrame = async (req, res) => {
     try {
-        const { ladleno, temp, loc } = req.body;
-        const result = await createFrame(ladleno, temp, loc);
+        const { LadleNo, Temperature, Location } = req.body;
+        const result = await createFrame(LadleNo, Temperature, Location);
         return res.status(201).json({ success: true, message: "Frame added successfully.", data: result });
     } catch (error) {
         console.error("ERROR /frames (POST):", error);
@@ -38,8 +38,8 @@ export const fetchFrameByID = async (req, res) => {
 export const updateFrameByID = async (req, res) => {
     try {
         const frameId = req.params.id;
-        const { ladleno, temp, loc } = req.body;
-        const result = await updateFrame(frameId, ladleno, temp, loc);
+        const { LadleNo, Temperature, Location } = req.body;
+        const result = await updateFrame(frameId, LadleNo, Temperature, Location);
         if (result.affectedRows === 0) {
             return res.status(404).json({ success: false, message: "Frame not found.", data: null });
         }

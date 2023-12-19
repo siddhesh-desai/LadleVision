@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/allLadles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <title>Admin | Home</title>
+</head>
+
+<body>
+    <section class="header">
+        <div class="logo">
+            <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+            <h2>Ladle<span>Vision</span></h2>
+        </div>
+
+    </section>
+    <section class="main">
+        <div class="sidebar">
+            <ul class="sidebar--items">
+                <li>
+                    <a href="#">
+                        <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
+                        <span class="sidebar--item">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="active--link">
+                        <span class="icon icon-2"><i class="ri-user-line"></i></span>
+                        <span class="sidebar--item">View Ladles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon-3"><i class="ri-user-2-line"></i></span>
+                        <span class="sidebar--item" style="white-space: nowrap">Ladle Tracking</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                        <span class="sidebar--item">Notifications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon icon-5"><i class="ri-line-chart-line"></i></span>
+                        <span class="sidebar--item">Maintance</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="sidebar--bottom-items">
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
+                        <span class="sidebar--item">Settings</span>
+                    </a>
+                </li> -->
+                <li>
+                    <a href="a.html">
+                        <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
+                        <span class="sidebar--item">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main--content">
+            <div class="overview">
+                <div class="title">
+                    <h2 class="section--title">Ladle Details</h2>
+
+                </div>
+                <br>
+                <div class="cards">
+
+                    <!-- <div class="card card-3">
+                        <div class="card--data">
+                            <div class="card--content">
+                                <h5 class="card--title">Ladle no.</h5>
+                                <h1>1</h1>
+
+                            </div>
+                            <i class="ri-battery-2-line card--icon--lg"></i>
+                        </div>
+                        <div class="ab">
+
+                            <button type="details" class="details">View Details</button>
+                        </div>
+                    </div>
+                     -->
+
+                </div>
+            </div>
+
+            <!-- <br> -->
+
+    </section>
+
+    <script type="module">
+        try {
+            const response = await fetch("/ladles");
+            const result = await response.json();
+            if (result.success && result.data.length > 0) {
+                result.data.forEach((l, i) => {
+                    const cardsContainer = document.querySelector(".cards");
+                    // console.log(cardsContainer);
+
+                    const card = document.createElement("div");
+                    card.classList.add("card", "card-3");
+
+                    const cardData = document.createElement("div");
+                    cardData.classList.add("card--data");
+
+                    const cardContent = document.createElement("div");
+                    cardContent.classList.add("card--content");
+
+                    const cardTitle = document.createElement("h5");
+                    cardTitle.classList.add("card--title");
+                    cardTitle.textContent = "Ladle no.";
+
+                    const ladleNumber = document.createElement("h1");
+                    ladleNumber.textContent = result.data[i].LadleNo;
+
+                    const cardIcon = document.createElement("i");
+                    cardIcon.classList.add("ri-battery-2-line", "card--icon--lg");
+
+                    const detailsButton = document.createElement("button");
+                    detailsButton.type = "button";
+                    detailsButton.classList.add("details");
+                    detailsButton.textContent = "View Details";
+
+                    cardContent.appendChild(cardTitle);
+                    cardContent.appendChild(ladleNumber);
+
+                    cardData.appendChild(cardContent);
+                    cardData.appendChild(cardIcon);
+
+                    card.appendChild(cardData);
+                    card.appendChild(detailsButton)
+
+                    cardsContainer.appendChild(card);
+                });
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    </script>
+</body>
+
+</html>
