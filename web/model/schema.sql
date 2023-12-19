@@ -13,15 +13,15 @@ INSERT INTO frame (LadleNo, Temperature, Location)
 VALUES (1, 25.5, 100);
 
 CREATE TABLE ladle (
-  LadleNo INT PRIMARY KEY AUTO_INCREMENT,
+  LadleNo INT PRIMARY KEY NOT NULL,
   SteelGrade VARCHAR(255) NOT NULL,
   ManufYear INT,
   LastCheckDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO ladle (SteelGrade, ManufYear)
-VALUES ('Grade XYZ', 2020);
+INSERT INTO ladle (LadleNo, SteelGrade, ManufYear)
+VALUES (2, 'Grade XYZ', 2020);
 
 CREATE TABLE user (
   email VARCHAR(255) PRIMARY KEY NOT NULL,

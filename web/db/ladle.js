@@ -17,16 +17,16 @@ export async function getLadle(LadleNo) {
   return rows[0];
 }
 
-export async function createLadle(SteelGrade, ManufYear) {
+export async function createLadle(LadleNo, SteelGrade, ManufYear) {
   const [result] = await pool.query(
     `
-    INSERT INTO ladle (SteelGrade, ManufYear)
-    VALUES (?, ?)
+    INSERT INTO ladle (LadleNo, SteelGrade, ManufYear)
+    VALUES (?, ?, ?)
     `,
-    [SteelGrade, ManufYear]
+    [LadleNo, SteelGrade, ManufYear]
   );
 
-  const ladle = await getLadle(result.insertId);
+  const ladle = await getLadle(LadleNo);
 
   return ladle;
 }

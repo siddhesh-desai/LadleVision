@@ -55,19 +55,24 @@
         }
 
         .mainn {
+            color: #39C440;
             width: 97%;
             /* height: 100vh; */
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: pop;
+            padding: 1rem;
             flex-direction: column;
             /* border: 2px solid red; */
             border-radius: 25px;
             padding-bottom: 43px;
             margin-top: 27px;
             margin-bottom: 27px;
-            padding-top: 1rem;
+            /* padding-top: 1rem; */
+            margin-top: 2rem;
+            /* background-color: #ff510086; */
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
 
         #progressWala {
@@ -306,17 +311,26 @@
             </div>
 
             <!-- //Recenet Verification Wala  -->
-            <div class="input-container">
-                <label for="ladleGrade">Ladle Grade:</label>
-                <input type="text" id="ladleGrade" name="ladleGrade" placeholder="Enter Ladle Grade" />
-            </div>
+            <h2 class="section--title">Add new Ladle</h2>
+            <form action="/ladles" style="margin-top: 1rem;" method="post">
 
-            <div class="input-container">
-                <label for="ladleMadeYear">Ladle Made Year:</label>
-                <input type="text" id="ladleMadeYear" name="ladleMadeYear" placeholder="Enter Ladle Made Year" />
-            </div>
+                <div class="input-container">
+                    <label for="ladleMadeYear">Ladle Number:</label>
+                    <input type="text" id="ladleMadeYear" name="LadleNo" placeholder="Enter Ladle Number" required/>
+                </div>
 
-            <button class="styled-button" type="submit">Add Ladle</button>
+                <div class="input-container">
+                    <label for="ladleGrade">Ladle Grade:</label>
+                    <input type="text" id="ladleGrade" name="SteelGrade" placeholder="Enter Ladle Grade" required/>
+                </div>
+
+                <div class="input-container">
+                    <label for="ladleMadeYear">Ladle Made Year:</label>
+                    <input type="text" id="ladleMadeYear" name="ManufYear" placeholder="Enter Ladle Made Year" required/>
+                </div>
+                
+                <button class="styled-button" style="background-color: #39C440; color: white;" type="submit">Add Ladle</button>
+            </form>
         </div>
     </section>
 

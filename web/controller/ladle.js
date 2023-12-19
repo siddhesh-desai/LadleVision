@@ -7,14 +7,17 @@ import { addMaintenanceRecord } from '../db/maintainance.js';
 
 export const addLadel = async (req, res) => {
     try {
-        const { SteelGrade, ManufYear } = req.body;
-        const result = await createLadle(SteelGrade, ManufYear);
-        return res.status(201).json({ success: true, message: "Ladle added successfully.", data: result });
+        const { LadleNo, SteelGrade, ManufYear } = req.body; 
+        const result = await createLadle(LadleNo, SteelGrade, ManufYear);
+        // return res.status(201).json({ success: true, message: "Ladle added successfully.", data: result });
+        return res.status(201).redirect("/ladles/allladles")
     } catch (error) {
         console.error("ERROR /ladles (POST):", error);
-        return res.status(500).json({ success: false, message: "Failed to add ladle.", data: null });
+        // return res.status(500).json({ success: false, message: "Failed to add ladle.", data: null });
+        return res.status(201).redirect("/ladles/allladles")
+
     }
-}
+};
 
 
 export const fetchAllLadle = async (req, res) => {
