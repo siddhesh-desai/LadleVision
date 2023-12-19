@@ -12,9 +12,9 @@
 :root{
     --primary-text-color : #183b56;
     --secondary-text-color : #577592;
-    /* --accent-color:#2294ed; */
+    --accent-color:#2294ed;
     --accent-color:#539e43;
-    --accent-color-dark:#1d69a3;
+    --accent-color-dark:#2e3730;
     --padding-inline-section :20px;
 }
 
@@ -103,6 +103,7 @@ ul{
 }
 .hover-links{
     color: var(--primary-text-color);
+    
 }
 
 .hover-links:hover{
@@ -153,6 +154,7 @@ ul{
 .header-left{
     max-width: 40vw;
     align-items: center;
+    
 }
 .header-left .primaryBtn{
     padding: 1rem;

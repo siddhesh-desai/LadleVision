@@ -15,20 +15,52 @@
 
 <style>
 	.main-nav {
-        justify-content: space-between;
-        margin-top: 1rem;
-        margin-right: 3rem;
-    }
-    .banner-text {
-      color: #ffffff;
-      padding: 0.9rem 0.8rem;
-      margin-left: 2.4rem;
-  }
-  .small-bold-text {
-    font-size: 1rem;
-    font-weight: bold;
-}
-</style>
+	  justify-content: space-between;
+	  margin-top: 1rem;
+	  margin-right: 3rem;
+	}
+	.banner-text {
+	  color: #ffffff;
+	  padding: 0.9rem 0.8rem;
+	  margin-left: 2.4rem;
+	}
+	.small-bold-text {
+	  font-size: 1rem;
+	  font-weight: bold;
+	}
+	.naVV {
+	  background-color: rgb(223, 255, 217);
+	  border-radius: 20px;
+	  margin-left: 2rem;
+	  margin-right: 2rem;
+	  margin-top: 2rem;
+	}
+	.nav-links ul {
+	  justify-content: end;
+	  gap: 5%;
+	}
+	.header-section {
+	  justify-content: center;
+	  gap: 15%;
+	  margin-top: 2rem;
+	}
+	.header-left {
+	  max-width: 40vw;
+	  margin-left: 4rem;
+	  /* margin-top: 4rem; */
+	}
+	p {
+	  text-align: justify;
+	}
+	.main-agileinfo {
+	  width: 35%;
+	  margin: 3em auto;
+	  background: 539e43;
+	  background-size: cover;
+	  border-radius: 1rem;
+	  /* height: 103%; */
+	}
+  </style>
 </head>
 <body>
 		<!-- main -->
@@ -42,18 +74,41 @@
 	  </section> -->
   
 	  <!-- Navbar  -->
-	  <nav>
+	  <!-- Navbar  -->
+	  <nav class="naVV">
 		<div class="container main-nav flex">
 		  <a href="/" class="company-logo">
 			<img src="/images/Ladle_Vision_Logo.png" alt="Company Logo" />
 		  </a>
 		  <div class="nav-links">
 			<!-- ShortCut ul>li*6>a  -->
-			<ul class="flex">
-			  <li><a href="#" class="hover-links">Technical Data</a></li>
-			  <li><a href="#" class="hover-links">Safety</a></li>
-			  <li><a href="/login" class="hover-links secondaryBtn" style="width: 5rem;">Sign In</a></li>
-			  <li><a href="/register" class="hover-links primaryBtn" style="width: 6rem;">Sign Up</a></li>
+			<ul class="flex" style="font-weight: bold; font-size: 1rem">
+			  <li>
+				<a
+				  href="https://drive.google.com/drive/folders/1eG6Exs1_7QNGTNPhhiz4qNpGN3pE4DSQ?usp=sharing"
+				  class="hover-links"
+				  >Technical Data</a
+				>
+			  </li>
+  
+			  <li>
+				<a
+				  href="/login"
+				  class="hover-links secondaryBtn"
+				  style="width: 6rem; padding: 0.5rem; text-align: center"
+				  >Log In</a
+				>
+			  </li>
+			  <li>
+				<a
+				  href="/register"
+				  class="hover-links primaryBtn"
+				  tyle="width: 6rem;
+					padding: 0.5rem;
+					text-align: center;"
+				  >Sign Up</a
+				>
+			  </li>
 			</ul>
 		  </div>
 		</div>

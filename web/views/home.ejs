@@ -13,23 +13,53 @@
       crossorigin="anonymous"
     />
     <!-- <link rel="stylesheet" href="../public/css/homeParkEace.css" /> -->
-    <link href="/css/homeParkEace.css" rel="stylesheet" type="text/css" media="all" />
+    <link
+      href="/css/homeParkEace.css"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
 
     <style>
       .main-nav {
         justify-content: space-between;
         margin-top: 1rem;
         margin-right: 3rem;
+      }
+      .banner-text {
+        color: #ffffff;
+        padding: 0.9rem 0.8rem;
+        margin-left: 2.4rem;
+      }
+      .small-bold-text {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      .naVV {
+        background-color: rgb(223, 255, 217);
+        border-radius: 20px;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-top: 2rem;
+      }
+      .nav-links ul {
+        justify-content: end;
+        gap: 5%;
+        margin-top: 1rem;
+      }
+      .header-section {
+        justify-content: center;
+        gap: 15%;
+        margin-top: 2rem;
     }
-    .banner-text {
-      color: #ffffff;
-      padding: 0.9rem 0.8rem;
-      margin-left: 2.4rem;
+    .header-left {
+      max-width: 40vw;
+      margin-left: 4rem;
+      /* margin-top: 4rem; */
   }
-  .small-bold-text {
-    font-size: 1rem;
-    font-weight: bold;
-}
+  p{
+    text-align: justify;
+  }
     </style>
   </head>
   <body>
@@ -43,18 +73,35 @@
     </section> -->
 
     <!-- Navbar  -->
-    <nav>
+    <nav class="naVV">
       <div class="container main-nav flex">
         <a href="/" class="company-logo">
           <img src="/images/Ladle_Vision_Logo.png" alt="Company Logo" />
         </a>
         <div class="nav-links">
           <!-- ShortCut ul>li*6>a  -->
-          <ul class="flex">
-            <li><a href="#" class="hover-links">Technical Data</a></li>
-            <li><a href="#" class="hover-links">Safety</a></li>
-            <li><a href="/login" class="hover-links secondaryBtn" style="width: 5rem;">Sign In</a></li>
-            <li><a href="/register" class="hover-links primaryBtn" style="width: 6rem;">Sign Up</a></li>
+          <ul class="flex" style="font-weight: bold;
+          font-size: 1rem;">
+            <li><a href="https://drive.google.com/drive/folders/1eG6Exs1_7QNGTNPhhiz4qNpGN3pE4DSQ?usp=sharing" class="hover-links">Technical Data</a></li>
+        
+            <li>
+              <a
+                href="/login"
+                class="hover-links secondaryBtn"
+                style="width: 6rem; padding: 0.5rem; text-align: center"
+                >Log In</a
+              >
+            </li>
+            <li>
+              <a
+                href="/register"
+                class="hover-links primaryBtn"
+                tyle="width: 6rem;
+                padding: 0.5rem;
+                text-align: center;"
+                >Sign Up</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -66,9 +113,13 @@
         <div class="header-left">
           <h1>Track Ladles</h1>
           <p>
-            Ladle Vision System is the innovative solution, engineered as modular system, dedicated to the effective management of all operations related to Ladles used in liquid steel production process, through the improvement and extension of the automatisms of supervision, control and command functions. 
+            Ladle Vision System is the innovative solution, engineered as
+            modular system, dedicated to the effective management of all
+            operations related to Ladles used in liquid steel production
+            process, through the improvement and extension of the automatisms of
+            supervision, control and command functions.
           </p>
-          <a href="#" class="hover-links primaryBtn">Get Started</a>
+          <a href="/login" class="hover-links primaryBtn">Get Started</a>
         </div>
         <div class="header-right">
           <!-- <img src="assets/asset 1.png" alt="" /> -->
@@ -77,10 +128,10 @@
       </div>
     </header>
 
-    <hr>
+    <hr />
 
     <!-- Feacture Section  -->
-    <section class="features-section pt-5 ">
+    <section class="features-section pt-5">
       <div class="container">
         <div class="feaures-header text-center">
           <h2>Ladle Tracking made easy</h2>
@@ -91,23 +142,29 @@
             <img src="assets/asset 42.png" alt="" />
             <h3>🚀 Track Ladles</h3>
             <p>Real-time tracking of ladles within your steel plant!</p>
-            <a href="#" class="hover-links secondaryBtn"
+            <a href="https://drive.google.com/file/d/1R-HRX1ctzmfaibRX_Vmhzsjrg_WAzjA0/view?usp=sharing" class="hover-links secondaryBtn"
               >Learn More <i class="fa-solid fa-arrow-right"></i
             ></a>
           </div>
           <div class="features-card text-center">
             <img src="assets/asset 43.png" alt="" />
             <h3>🚀 Analytics</h3>
-            <p> Gain insights with advanced analytics for efficient ladle management!</p>
-            <a href="#" class="hover-links secondaryBtn"
+            <p>
+              Gain insights with advanced analytics for efficient ladle
+              management!
+            </p>
+            <a href="https://drive.google.com/file/d/1R-HRX1ctzmfaibRX_Vmhzsjrg_WAzjA0/view?usp=sharing" class="hover-links secondaryBtn"
               >Learn More <i class="fa-solid fa-arrow-right"></i
             ></a>
           </div>
           <div class="features-card text-center">
             <img src="assets/asset 44.png" alt="" />
             <h3>🚀 Seamless experience</h3>
-            <p>Power through data insights effortlessly with our intuitive dashboard!</p>
-            <a href="#" class="hover-links secondaryBtn"
+            <p>
+              Power through data insights effortlessly with our intuitive
+              dashboard!
+            </p>
+            <a href="https://drive.google.com/file/d/1R-HRX1ctzmfaibRX_Vmhzsjrg_WAzjA0/view?usp=sharing" class="hover-links secondaryBtn"
               >Learn More <i class="fa-solid fa-arrow-right"></i
             ></a>
           </div>
@@ -115,11 +172,8 @@
       </div>
     </section>
 
-
-
-
     <!-- Footer Section  -->
-    <footer class="footerSection pt-5 mt-5" style="margin-top: 10rem;">
+    <footer class="footerSection pt-5 mt-5" style="margin-top: 10rem">
       <div class="container flex footer-container">
         <a href="#" class="img">
           <img src="assets/asset 45.png" alt="" />
@@ -150,7 +204,6 @@
           <a href="#" class="hover-links">Copper</a>
           <a href="#" class="hover-links">Ferro-Alloys</a>
         </div>
-
       </div>
     </footer>
 
@@ -160,15 +213,16 @@
         <a href="#" class="hover-links">Privacy</a>
         <a href="#" class="hover-links">Terms & Conditions</a>
         <a href="#" class="hover-links">Security Information</a>
-        <a href="#" class="hover-links"><i class="fa-brands fa-square-facebook"></i></a>
+        <a href="#" class="hover-links"
+          ><i class="fa-brands fa-square-facebook"></i
+        ></a>
         <a href="#" class="hover-links"><i class="fa-brands fa-twitter"></i></a>
-        <a href="#" class="hover-links"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" class="hover-links"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
         <a href="#" class="hover-links"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-
-  
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -186,6 +240,9 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="https://kit.fontawesome.com/a1975876c8.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/a1975876c8.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
