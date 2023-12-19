@@ -454,7 +454,7 @@
                     // console.log(result.data);
 
                     result.data.forEach((l, i) => {
-                        changeColor(l.Location, randomColors[i]);
+                        changeColor(l.Location, randomColors[l.LadleNo]);
                         changeText(l.Location, l.LadleNo);
                     });
                 }
