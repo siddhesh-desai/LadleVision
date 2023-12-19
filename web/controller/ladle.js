@@ -3,7 +3,7 @@ import moment from 'moment';
 import {createLadle, getAllLadles, getLadle, updateLadle, deleteLadle } from "../db/ladle.js"
 
 import { getLatestLadleInformation, getCurrentLocationOfAllLadles } from "../db/helper.js"; 
-import { addMaintenanceRecord } from '../db/maintenance.js';
+import { addMaintenanceRecord } from '../db/maintainance.js';
 
 export const addLadel = async (req, res) => {
     try {

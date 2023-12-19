@@ -35,10 +35,12 @@ app.get("/register", (req, res) => res.render("register", {message: null}))
 
 app.get("/protected", requireAdminAuth, (req, res) => res.render("protected"))
 
+
 app.get("/dashboard",requireAdminAuth,(req, res) => res.render("dashboard"))
 
 app.get("/oneLadle", requireAdminAuth,(req, res) => res.render("oneLadle"))
 app.get("/alert", requireAdminAuth,getLadlesNeedInspection)
+
 
 
 // Auth route
