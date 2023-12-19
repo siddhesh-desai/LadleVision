@@ -1,4 +1,5 @@
 import { pool } from "./database.js";
+import moment from 'moment';
 
 export async function getAllLadles() {
   const [rows] = await pool.query("SELECT * FROM ladle");
@@ -68,7 +69,7 @@ export async function getHaltLadle(thresholdSeconds) {
     const currentTime = new Date();
 
     const [rows] = await pool.query(
-      `SELECT * FROM ladle`
+      "SELECT * FROM ladle WHERE Location NOT IN (1, 9)"
     );
     // Filter rows based on the threshold
     const filteredRows = rows.filter((row) => {
@@ -77,11 +78,10 @@ export async function getHaltLadle(thresholdSeconds) {
         .duration(currentTime - lastUpdatedTime)
         .asSeconds();
       return timeDifference > thresholdSeconds;
-    });
-
-    return filteredRows;
+    });    return filteredRows;
   } catch (error) {
     console.error("Error getting halted ladles:", error);
     throw error;
+
   }
 }

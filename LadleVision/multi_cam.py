@@ -9,7 +9,7 @@ import numpy as np
 import easyocr
 import time
 
-from LadleVision.database_functions import insert_into_table
+from LadleVision.database_functions import insert_into_table, update_ladle_location, updateCircularTime
 
 print("hello")
 cap = cv2.VideoCapture(0)
@@ -76,9 +76,15 @@ while True:
                 cvzone.cornerRect(img, bbox)
                 # cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
                 if num_detected and num_detected[0] in ['2', '3', '5', '6', '8']:
-                    print([int(num_detected[0]), int(x1 // (width / num_frames)), 55])
+                    location = int(x1 // (width / num_frames))+1
+                    number_detected = int(num_detected[0])
+                    print([number_detected, location, 55])
                     # print([int(num_detected[0]), datetime.now().timestamp(), int(x1 // (width / num_frames)), 55, "N"])
-                    insert_into_table(int(num_detected[0]), 32, int(x1 // (width / num_frames))+1)
+                    insert_into_table(number_detected, 32, location)
+                    update_ladle_location(number_detected, location)
+
+                    if location in (1, 9):
+                        updateCircularTime(number_detected, location)
 
 
     cv2.imshow("Image", img)
