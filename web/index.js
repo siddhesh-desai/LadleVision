@@ -40,6 +40,7 @@ app.get("/dashboard",requireAdminAuth,(req, res) => res.render("dashboard"))
 
 app.get("/oneLadle", requireAdminAuth,(req, res) => res.render("oneLadle"))
 app.get("/alert", requireAdminAuth,getLadlesNeedInspection)
+app.get("/halt", requireAdminAuth, (req, res) => res.render("halt"))
 
 
 

@@ -1,6 +1,6 @@
 
 import moment from 'moment';
-import {createLadle, getAllLadles, getLadle, updateLadle, deleteLadle } from "../db/ladle.js"
+import {createLadle, getAllLadles, getLadle, updateLadle, deleteLadle, getHaltLadle } from "../db/ladle.js"
 
 import { getLatestLadleInformation, getCurrentLocationOfAllLadles } from "../db/helper.js"; 
 import { addMaintenanceRecord } from '../db/maintainance.js';
@@ -198,6 +198,28 @@ export const renderAllLadles = async (req, res) => {
         // Handle errors and send an error response
         console.error("Error getting ladles:", error);
         res.status(500).render("allLadles",{
+            success: false,
+            message: 'Internal Server Error',
+            data: null
+        });
+    }
+}
+
+export const sendHaltedLadle = async (req, res) => {
+    try {
+        const thresholdSeconds = 5;
+        const haltedLadles = await getHaltLadle(thresholdSeconds);
+
+        // Send the halted ladles as a JSON response
+        res.status(200).json({
+            success: true,
+            message: 'Halted ladles retrieved successfully.',
+            data: haltedLadles
+        });
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error("Error getting halted ladles:", error);
+        res.status(500).json({
             success: false,
             message: 'Internal Server Error',
             data: null

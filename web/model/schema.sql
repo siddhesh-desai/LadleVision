@@ -17,6 +17,10 @@ CREATE TABLE ladle (
   SteelGrade VARCHAR(255) NOT NULL,
   ManufYear INT,
   LastCheckDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  LastUpdated TIMESTAMP,
+  Location INT,
+  FirstLocationTime TIMESTAMP,
+  LastLocationTime TIMESTAMP,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

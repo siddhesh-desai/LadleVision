@@ -1,6 +1,6 @@
 import express from "express";
 
-import { addLadel, deleteLadleByID, doInspection, fetchAllLadle, fetchCurrentLocationOfAllLadles, fetchLadleByID, fetchLatestInfoOfLadleByID, getLadlesNeedInspection, renderAllLadles, renderSingleLadlePage, updateLadleByID } from "../controller/ladle.js";
+import { addLadel, deleteLadleByID, doInspection, fetchAllLadle, fetchCurrentLocationOfAllLadles, fetchLadleByID, fetchLatestInfoOfLadleByID, getLadlesNeedInspection, renderAllLadles, renderSingleLadlePage, sendHaltedLadle, updateLadleByID } from "../controller/ladle.js";
 import { renderAllMaintenance } from "../controller/maintainance.js";
 
 
@@ -17,6 +17,8 @@ router.get("/", fetchAllLadle);
 router.get("/allLadles",renderAllLadles)
 
 router.get("/inspection", getLadlesNeedInspection)
+
+router.get("/gethalted", sendHaltedLadle)
 
 router.get("/inspect/:id", doInspection)
 

@@ -55,4 +55,24 @@ export async function deleteLadle(LadleNo) {
   return result;
 }
 
+export async function getHaltLadle(thresholdSeconds) {
+    try {
+        const currentTime = new Date();
 
+        const [rows] = await pool.query(
+            `
+            SELECT LadleNo, LastUpdated
+            FROM ladle
+            WHERE LastUpdated IS NOT NULL
+              AND TIMESTAMPDIFF(SECOND, LastUpdated, ?) > ?
+              AND Location NOT IN (1, 9)
+            `,
+            [currentTime, thresholdSeconds]
+        );
+
+        return rows;
+    } catch (error) {
+        console.error("Error getting halted ladles:", error);
+        throw error;
+    }
+}
