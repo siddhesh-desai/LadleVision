@@ -48,9 +48,14 @@ while True:
 
                     # print([int(num_detected[0]), datetime.now().timestamp(), int(x1 // (width / num_frames)), 55,
                     # "N"])
+                    location = int(x1 // (width / num_frames))+1
+                    number_detected = int(num_detected[0])
                     print(num_detected[0])
-                    insert_into_table(int(num_detected[0]), 32, int(x1 // (width / num_frames))+1)
-                    update_ladle_location(int(num_detected[0]), int(x1 // (width / num_frames))+1)
+                    insert_into_table(number_detected, 32, location)
+                    update_ladle_location(number_detected, location)
+
+                    if location in (1, 3):
+                        updateCircularTime(number_detected, location)
             #     cvzone.cornerRect(img, bbox)
             #     cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
 
