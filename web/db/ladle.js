@@ -31,7 +31,12 @@ export async function createLadle(LadleNo, SteelGrade, ManufYear) {
   return ladle;
 }
 
-export async function updateLadle(LadleNo, SteelGrade, ManufYear, LastCheckDate) {
+export async function updateLadle(
+  LadleNo,
+  SteelGrade,
+  ManufYear,
+  LastCheckDate
+) {
   const [result] = await pool.query(
     `
     UPDATE ladle
@@ -47,32 +52,36 @@ export async function updateLadle(LadleNo, SteelGrade, ManufYear, LastCheckDate)
 }
 
 export async function deleteLadle(LadleNo) {
-  const [result] = await pool.query(`
+  const [result] = await pool.query(
+    `
     DELETE FROM ladle
     WHERE LadleNo = ?
-  `, [LadleNo]);
+  `,
+    [LadleNo]
+  );
 
   return result;
 }
 
 export async function getHaltLadle(thresholdSeconds) {
-    try {
-        const currentTime = new Date();
+  try {
+    const currentTime = new Date();
 
-        const [rows] = await pool.query(
-            `
-            SELECT LadleNo, LastUpdated
-            FROM ladle
-            WHERE LastUpdated IS NOT NULL
-              AND TIMESTAMPDIFF(SECOND, LastUpdated, ?) > ?
-              AND Location NOT IN (1, 9)
-            `,
-            [currentTime, thresholdSeconds]
-        );
+    const [rows] = await pool.query(
+      `SELECT * FROM ladle`
+    );
+    // Filter rows based on the threshold
+    const filteredRows = rows.filter((row) => {
+      const lastUpdatedTime = moment(row.LastUpdated);
+      const timeDifference = moment
+        .duration(currentTime - lastUpdatedTime)
+        .asSeconds();
+      return timeDifference > thresholdSeconds;
+    });
 
-        return rows;
-    } catch (error) {
-        console.error("Error getting halted ladles:", error);
-        throw error;
-    }
+    return filteredRows;
+  } catch (error) {
+    console.error("Error getting halted ladles:", error);
+    throw error;
+  }
 }
