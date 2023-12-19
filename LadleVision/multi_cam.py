@@ -9,7 +9,7 @@ import numpy as np
 import easyocr
 import time
 
-from LadleVision.database_functions import insert_into_table
+from LadleVision.database_functions import insert_into_table, update_ladle_location
 
 print("hello")
 cap = cv2.VideoCapture(0)
@@ -79,6 +79,7 @@ while True:
                     print([int(num_detected[0]), int(x1 // (width / num_frames)), 55])
                     # print([int(num_detected[0]), datetime.now().timestamp(), int(x1 // (width / num_frames)), 55, "N"])
                     insert_into_table(int(num_detected[0]), 32, int(x1 // (width / num_frames))+1)
+                    update_ladle_location(int(num_detected[0]), int(x1 // (width / num_frames))+1)
 
 
     cv2.imshow("Image", img)

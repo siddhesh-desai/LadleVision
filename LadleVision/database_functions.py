@@ -68,8 +68,19 @@ def update_ladle_location(LadleNo, newLocation):
 
         # Your SQL queries within the specified database
         # For example, you can execute a SELECT query
+        cursor.execute(f"SELECT Location from ladle WHERE LadleNo = {LadleNo};")
+        results = cursor.fetchall()[0][0]
+        print(results)
 
-        cursor.execute(f"UPDATE ladle SET Location = {newLocation} WHERE {LadleNo} = ?;")
+
+
+        if results is None:
+            cursor.execute(f"UPDATE ladle SET Location = {newLocation}, LastUpdated = CURRENT_TIMESTAMP WHERE LadleNo = {LadleNo};")
+        else:
+            if results != newLocation:
+                cursor.execute(f"UPDATE ladle SET Location = {newLocation}, LastUpdated = CURRENT_TIMESTAMP WHERE LadleNo = {LadleNo};")
+        # print("prevLocation:",prevLocation);
+
         # print(LadleNo)
         conn.commit()
 
@@ -81,3 +92,5 @@ def update_ladle_location(LadleNo, newLocation):
         # Close the cursor and connection
         cursor.close()
         conn.close()
+
+update_ladle_location(2,2)

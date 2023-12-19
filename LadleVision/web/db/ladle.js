@@ -1,4 +1,5 @@
 import { pool } from "./database.js";
+import moment from 'moment';
 
 export async function getAllLadles() {
   const [rows] = await pool.query("SELECT * FROM ladle");
@@ -31,7 +32,12 @@ export async function createLadle(LadleNo, SteelGrade, ManufYear) {
   return ladle;
 }
 
-export async function updateLadle(LadleNo, SteelGrade, ManufYear, LastCheckDate) {
+export async function updateLadle(
+  LadleNo,
+  SteelGrade,
+  ManufYear,
+  LastCheckDate
+) {
   const [result] = await pool.query(
     `
     UPDATE ladle
@@ -47,32 +53,38 @@ export async function updateLadle(LadleNo, SteelGrade, ManufYear, LastCheckDate)
 }
 
 export async function deleteLadle(LadleNo) {
-  const [result] = await pool.query(`
+  const [result] = await pool.query(
+    `
     DELETE FROM ladle
     WHERE LadleNo = ?
-  `, [LadleNo]);
+  `,
+    [LadleNo]
+  );
 
   return result;
 }
 
 export async function getHaltLadle(thresholdSeconds) {
-    try {
-        const currentTime = new Date();
+  try {
+    const currentTime = new Date();
 
-        const [rows] = await pool.query(
-            `
-            SELECT LadleNo, LastUpdated
-            FROM ladle
-            WHERE LastUpdated IS NOT NULL
-              AND TIMESTAMPDIFF(SECOND, LastUpdated, ?) > ?
-              AND Location NOT IN (1, 9)
-            `,
-            [currentTime, thresholdSeconds]
-        );
-
-        return rows;
-    } catch (error) {
-        console.error("Error getting halted ladles:", error);
-        throw error;
-    }
+    const [rows] = await pool.query(
+      "SELECT * FROM ladle WHERE Location NOT IN (1, 9)"
+    );
+    // Filter rows based on the threshold
+    const filteredRows = rows.filter((row) => {
+      const lastUpdatedTime = moment(row.LastUpdated);
+//      console.log("lastUpdatedTime:", lastUpdatedTime)
+    console.log(row.LastUpdated)
+      const timeDifference = moment
+        .duration(currentTime - lastUpdatedTime)
+        .asSeconds();
+      return timeDifference > thresholdSeconds;
+    });
+    console.log("rows:",filteredRows)
+    return filteredRows;
+  } catch (error) {
+    console.error("Error getting halted ladles:", error);
+    throw error;
+}
 }

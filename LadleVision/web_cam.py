@@ -50,6 +50,7 @@ while True:
                     # "N"])
                     print(num_detected[0])
                     insert_into_table(int(num_detected[0]), 32, int(x1 // (width / num_frames))+1)
+                    update_ladle_location(int(num_detected[0]), int(x1 // (width / num_frames))+1)
             #     cvzone.cornerRect(img, bbox)
             #     cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
 
