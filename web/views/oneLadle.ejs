@@ -261,14 +261,12 @@
                                     <%=data.SteelGrade%>
                                 </td>
                             </tr>
-                            <% if(data.Temperature) {%>
                             <tr>
                                 <td>Temprature</td>
                                 <td style="color: red;">
                                     <%=data.Temperature%> K
                                 </td>
                             </tr>
-                            <% } %>
                             <tr>
                                 <td>Last Inspection Date</td>
                                 <td>
@@ -279,8 +277,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- <h1 style="color: #39C440;">Live Ladle Location</h1> -->
-                <h2 class="section--title">Ladle Details</h2>
+                <h1>Live Ladle Location</h1>
                 <!-- Ladles Mapping -->
                 <div id="line-container">
                     <div class="point" id="point1"></div>
@@ -295,15 +292,15 @@
                 </div>
 
                 <div id="text-container">
-                    <div style="color: #39C440;" >start</div>
+                    <div >Start</div>
                     <div ></div>
-                    <div style="color: brown;" >SM 1</div>
+                    <div style="color: brown;" >SMS 1</div>
                     <div ></div>
-                    <div style="color: brown;">SM 2</div>
+                    <div style="color: brown;">SMS 2</div>
                     <div ></div>
-                    <div style="color: brown;">SM 3</div>
+                    <div style="color: brown;">SMS 3</div>
                     <div ></div>
-                    <div style="color: red;" >end</div>
+                    <div style="color: red;" >End</div>
                 </div>
 
             </div>
@@ -381,20 +378,12 @@
             const result = await response.json();
 
             if (result.success) {
-                if(result.data.lenght > 0){
-                    resetColors();
-                    resetText();
-                    // console.log(result.data);
-                    
-                    changeColor(result.data.Location, randomColors[16]);
-                    changeText(result.data.Location, result.data.LadleNo);
-                }else{
-                    // console.log("Hide")
-                    document.querySelectorAll(".section--title")[1].innerHTML = "The ladle has not been utilized.";
-                    document.getElementById("line-container").style.display = "none";
-                    document.getElementById("text-container").style.display = "none";
-                }
-                
+                resetColors();
+                resetText();
+                // console.log(result.data);
+
+                changeColor(result.data.Location, randomColors[16]);
+                changeText(result.data.Location, result.data.LadleNo);
             }
         } catch (error) {
             console.log(error);

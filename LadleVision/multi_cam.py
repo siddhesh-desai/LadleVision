@@ -11,26 +11,30 @@ import time
 
 from LadleVision.database_functions import insert_into_table
 
+print("hello")
 cap = cv2.VideoCapture(0)
-address = "http://100.86.238.69:8080/video"
+address = "http://100.66.83.49:8080/video"
 cap.open(address)
 
+print("hello")
 cap2 = cv2.VideoCapture(0)
-address2 = "http://192.168.99.29:8080/video"
+address2 = "http://192.168.68.29:8080/video"
 cap2.open(address2)
 
+print("hello")
 cap3 = cv2.VideoCapture(0)
-address3 = "http://192.168.99.120:8080/video"
+address3 = "http://192.168.68.227:8080/video"
 cap3.open(address3)
 
+print("hello")
 class_names = ['Number', 'Ladle', 'Ladle', 'Number', 'Ladle', 'Number']
 
 model = YOLO('Models/final_model.pt')
 reader = easyocr.Reader(['en'])
 
-width = 1440 * 4
-height = 270 * 4
-num_frames = 3
+width = 1440
+height = 270
+num_frames = 9
 
 while True:
     # time.sleep(0.25)
@@ -39,9 +43,9 @@ while True:
     success3, img3 = cap3.read()
 
     # f2 = cv2.resize(img2, (480, 270))
-    f2 = cv2.resize(img2, (1920, 1080))
-    f1 = cv2.resize(img1, (1920, 1080))
-    f3 = cv2.resize(img3, (1920, 1080))
+    f2 = cv2.resize(img2, (480, 270))
+    f1 = cv2.resize(img1, (480, 270))
+    f3 = cv2.resize(img3, (480, 270))
     # f1 = cv2.resize(img1, (480*4, 270*4))
     # f3 = cv2.resize(img3, (480*4, 270*4))
     img = np.hstack((f1, f2, f3))
@@ -64,17 +68,18 @@ while True:
 
             if cls == 1 or cls == 2 or cls == 4:
                 cvzone.cornerRect(img, bbox)
-                cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
+                # cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
                 # print([57, datetime.now().timestamp(), w // (width / 2), 55, "L"])
             elif cls == 0 or cls == 3 or cls == 5:
                 cropped = img_og[y1:y2, x1:x2]
                 num_detected += reader.readtext(cropped, detail=0)
                 cvzone.cornerRect(img, bbox)
-                cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
+                # cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
                 if num_detected and num_detected[0] in ['2', '3', '5', '6', '8']:
                     print([int(num_detected[0]), int(x1 // (width / num_frames)), 55])
                     # print([int(num_detected[0]), datetime.now().timestamp(), int(x1 // (width / num_frames)), 55, "N"])
-                    insert_into_table(int(num_detected[0]), int(x1 // (width / num_frames)), 32)
+                    insert_into_table(int(num_detected[0]), 32, int(x1 // (width / num_frames))+1)
+
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
