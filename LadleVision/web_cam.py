@@ -54,7 +54,7 @@ while True:
                     insert_into_table(number_detected, 32, location)
                     update_ladle_location(number_detected, location)
 
-                    if location in (1, 3):
+                    if location in (1, 9):
                         updateCircularTime(number_detected, location)
             #     cvzone.cornerRect(img, bbox)
             #     cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))

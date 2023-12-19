@@ -116,7 +116,7 @@ def updateCircularTime(LadleNo, location):
         # Use the desired database
         cursor.execute(f"USE {database_to_change_to};")
 
-        if location == 3:
+        if location == 9:
             # lasttime = currenttime
             cursor.execute(
                 f"UPDATE ladle SET LastLocationTime = CURRENT_TIMESTAMP WHERE LadleNo = {LadleNo};")
@@ -145,9 +145,10 @@ def updateCircularTime(LadleNo, location):
                     f"UPDATE ladle SET FirstLocationTime = '{currenttime}' WHERE LadleNo = {LadleNo};")
             elif currenttime >= lastlocationtime:
                 cursor.execute(
-                    f"UPDATE ladle SET CircularTime = TIMESTAMPDIFF(SECOND, '{lastlocationtime}', '{currenttime}') WHERE LadleNo = {LadleNo};")
+                    f"UPDATE ladle SET CircularTime = TIMESTAMPDIFF(SECOND, '{firstlocationtime}', '{currenttime}') WHERE LadleNo = {LadleNo};")
                 cursor.execute(f"UPDATE ladle SET FirstLocationTime = '{currenttime}' WHERE LadleNo = {LadleNo};")
-            else:
+                cursor.execute(f"UPDATE ladle SET FirstLocationTime = NULL WHERE LadleNo = NULL;")
+            # else:
                 cursor.execute(
                     f"UPDATE ladle SET FirstLocationTime = '{currenttime}' WHERE LadleNo = {LadleNo};")
 
@@ -170,11 +171,11 @@ def updateCircularTime(LadleNo, location):
         conn.close()
 
 #
-updateCircularTime(2, 1)
-time.sleep(10)
-print("Finish")
-updateCircularTime(2, 3)
-time.sleep(3)
-print("Finish")
-updateCircularTime(2, 1)
-print("Finish")
+# updateCircularTime(2, 1)
+# time.sleep(1)
+# print("Finish")
+# updateCircularTime(2, 3)
+# time.sleep(3)
+# print("Finish")
+# updateCircularTime(2, 1)
+# print("Finish")
