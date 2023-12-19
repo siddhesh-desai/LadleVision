@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link href="a.html" />
+    <title>Admin | Home</title>
+
+    <style>
+      @font-face {
+        font-family: pop;
+        src: url(./Fonts/Poppins-Medium.ttf);
+      }
+
+      .input-container {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input {
+        padding: 10px;
+        width: 300px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .styled-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #3498db;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 1rem;
+      }
+
+      .styled-button:hover {
+        background-color: #2980b9;
+      }
+      .mainn {
+        width: 97%;
+        /* height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: pop;
+        flex-direction: column;
+        border: 2px solid red;
+        border-radius: 25px;
+        padding-bottom: 43px;
+        margin-top: 27px;
+        margin-bottom: 27px;
+        padding-top: 1rem;
+      }
+      #progressWala {
+        display: flex;
+        margin-top: 23px;
+      }
+      #progressWala li {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 35px;
+      }
+      #progressWala .last {
+        margin-right: 33px;
+      }
+      #progressWala li .icon {
+        font-size: 35px;
+        color: #ff4732;
+        margin: 0 60px;
+      }
+      #progressWala li .text {
+        font-size: 14px;
+        font-weight: 600;
+        color: #ff4732;
+      }
+
+      /* Progress Div Css  */
+
+      ul li .progress {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgba(68, 68, 68, 0.781);
+        margin: 14px 0;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        position: relative;
+        cursor: pointer;
+      }
+      .progress::after {
+        content: " ";
+        position: absolute;
+        width: 125px;
+        height: 5px;
+        background-color: rgba(68, 68, 68, 0.781);
+        right: 30px;
+      }
+      .one::after {
+        width: 0;
+        height: 0;
+      }
+      ul li .progress .uil {
+        display: none;
+      }
+      ul li .progress p {
+        font-size: 13px;
+      }
+
+      /* Active Css  */
+
+      ul li .active {
+        background-color: #ff4732;
+        display: grid;
+        place-items: center;
+      }
+      li .active::after {
+        background-color: #ff4732;
+      }
+      ul li .active p {
+        display: none;
+      }
+      ul li .active .uil {
+        font-size: 20px;
+        display: flex;
+      }
+      .card-notify {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        } 
+        
+        .styled-btn {
+        font-size: 16px;
+        color: #fff;
+        background-color: #39c440;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .styled-button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="header">
+      <div class="logo">
+        <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+        <h2>Ladle<span>Vision</span></h2>
+      </div>
+    </section>
+
+    <section class="main">
+      <div class="sidebar">
+        <ul class="sidebar--items">
+          <li>
+            <a href="#" id="active--link">
+              <span class="icon icon-1"
+                ><i class="ri-layout-grid-line"></i
+              ></span>
+              <span class="sidebar--item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon icon-2"><i class="ri-user-line"></i></span>
+              <span class="sidebar--item">View Ladles</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon icon-3"><i class="ri-user-2-line"></i></span>
+              <span class="sidebar--item" style="white-space: nowrap"
+                >Ladle Tracking</span
+              >
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon icon-4"><i class="ri-user-line"></i></span>
+              <span class="sidebar--item">Notifications</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon icon-5"
+                ><i class="ri-line-chart-line"></i
+              ></span>
+              <span class="sidebar--item">Maintance</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="sidebar--bottom-items">
+          <!-- <li>
+                    <a href="#">
+                        <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
+                        <span class="sidebar--item">Settings</span>
+                    </a>
+                </li> -->
+          <li>
+            <a href="a.html">
+              <span class="icon icon-8"
+                ><i class="ri-logout-box-r-line"></i
+              ></span>
+              <span class="sidebar--item">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="main--content">
+        <br><br>
+        <h1>Alerts</h1>
+        <br><br>
+        <div id="cardContainer"></div>
+        <% if(success) {%>
+            <% if(data.length == 0) { %>
+                <p>Everything fine no inspection needed.</p>
+            <% } else {%>
+                <% for(let i=0; i<data.length; i++) { %>
+                    <div class="card-notify">
+                        <div>Ladle number <%= data[i].LadleNo %> needs to be fixed.</div>
+                        <a href="/ladles/inspect/<%=data[i].LadleNo%>" class="styled-btn">Inspect</a>
+                    </div>
+                <% } %>
+            <% } %>
+        <% } else {%>
+            <p><%=message%></p>
+        <% }%>
+        
+      </div>
+    </section>
+
+    <script>
+        // Function to create and append the dynamic card
+        function renderCard(id) {
+          // Create the main card container
+          const cardContainer = document.getElementById('cardContainer');
+          const cardDiv = document.createElement('div');
+          cardDiv.classList.add('card-notify');
+      
+          // Create the content of the card
+          const cardContent = document.createElement('div');
+          cardContent.textContent = `Ladle number ${id} needs inspection.`;
+      
+          // Create the inspect button
+          const inspectButton = document.createElement('button');
+          inspectButton.classList.add('styled-btn');
+          inspectButton.textContent = 'Inspect';
+      
+          // Append the content and button to the card
+          cardDiv.appendChild(cardContent);
+          cardDiv.appendChild(inspectButton);
+      
+          // Append the card to the container
+          cardContainer.appendChild(cardDiv);
+        }
+      
+        // Call the function to render the dynamic card
+        // renderCard(1);
+
+        </script>
+  </body>
+</html>

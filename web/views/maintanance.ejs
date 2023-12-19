@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ladle.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <title>Admin | Home</title>
+
+    <style>
+        .table {
+            height: 300px;
+            overflow-y: scroll;
+          }
+          
+          table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+          }
+          
+          tr {
+            border-bottom: 1px solid #f1f1f1;
+          }
+          
+          td,
+          th {
+            padding-block: 10px;
+          }
+
+          .mainn {
+            width: 97%;
+            /* height: 100vh; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: pop;
+            flex-direction: column;
+            border: 2px solid red;
+            border-radius: 25px;
+            padding-bottom: 43px;
+            margin-top: 27px;
+            margin-bottom: 27px;
+            padding-top: 1rem;
+        }
+          #progressWala {
+            display: flex;
+            margin-top: 23px;
+          }
+          #progressWala li {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 35px;
+          }
+          #progressWala .last {
+            margin-right: 33px;
+          }
+          #progressWala li .icon {
+            font-size: 35px;
+            color: #ff4732;
+            margin: 0 60px;
+          }
+          #progressWala li .text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ff4732;
+          }
+    
+          /* Progress Div Css  */
+    
+          ul li .progress {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(68, 68, 68, 0.781);
+            margin: 14px 0;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            position: relative;
+            cursor: pointer;
+          }
+          .progress::after {
+            content: " ";
+            position: absolute;
+            width: 125px;
+            height: 5px;
+            background-color: rgba(68, 68, 68, 0.781);
+            right: 30px;
+          }
+          .one::after {
+            width: 0;
+            height: 0;
+          }
+          ul li .progress .uil {
+            display: none;
+          }
+          ul li .progress p {
+            font-size: 13px;
+          }
+    
+          /* Active Css  */
+    
+          ul li .active {
+            background-color: #ff4732;
+            display: grid;
+            place-items: center;
+          }
+          li .active::after {
+            background-color: #ff4732;
+          }
+          ul li .active p {
+            display: none;
+          }
+          ul li .active .uil {
+            font-size: 20px;
+            display: flex;
+          }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <div class="logo">
+            <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+            <h2>Ladle<span>Vision</span></h2>
+        </div> 
+        
+    </section>
+    <section class="main">
+        <div class="sidebar">
+            <ul class="sidebar--items">
+              <li>
+                <a href="#">
+                  <span class="icon icon-1"
+                    ><i class="ri-layout-grid-line"></i
+                  ></span>
+                  <span class="sidebar--item">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="icon icon-2" ><i class="ri-user-line"></i></span>
+                  <span class="sidebar--item">View Ladles</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="icon icon-3"><i class="ri-user-2-line"></i></span>
+                  <span class="sidebar--item" style="white-space: nowrap"
+                    >Ladle Tracking</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                  <span class="sidebar--item">Notifications</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" id="active--link">
+                  <span class="icon icon-5"
+                    ><i class="ri-line-chart-line"></i
+                  ></span>
+                  <span class="sidebar--item">Maintance</span>
+                </a>
+              </li>
+            </ul>
+            <ul class="sidebar--bottom-items">
+              <li>
+                  <span class="icon icon-8"
+                    ><i class="ri-logout-box-r-line"></i
+                  ></span>
+                  <span class="sidebar--item">Logout</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        <div class="main--content">
+            <div class="overview">
+                <div class="title">
+                    <h2 class="section--title">Ladle Details</h2>
+                    
+                </div>
+                <br>
+                
+                <div class="table">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Ladle Id</th>
+                          <th>Maintainance Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>31 Dec 2023</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>31 Dec 2023</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>31 Dec 2023</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>31 Dec 2023</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>  
+            </div>
+            <!-- <br> -->
+            
+    </section>
+</body>
+
+</html>

@@ -3,6 +3,7 @@ import moment from 'moment';
 import {createLadle, getAllLadles, getLadle, updateLadle, deleteLadle } from "../db/ladle.js"
 
 import { getLatestLadleInformation, getCurrentLocationOfAllLadles } from "../db/helper.js"; 
+import { addMaintenanceRecord } from '../db/maintenance.js';
 
 export const addLadel = async (req, res) => {
     try {
@@ -98,22 +99,22 @@ export const getLadlesNeedInspection = async (req, res) => {
 
             // Calculate the difference in days
             // const differenceInDays = currentDate.diff(lastCheckDate, 'days');
-            const differenceInDays = currentDate.diff(lastCheckDate, 'days');
+            const differenceInDays = currentDate.diff(lastCheckDate, 'minutes');
 
             console.log("Difference: ", differenceInDays);
 
             // Return ladles with a difference greater than or equal to 1 day
-            return differenceInDays >= 15;
+            return differenceInDays >= 1;
         });
-
-        return res.status(200).json({
+        // console.log(filteredLadles)
+        return res.status(200).render("alert",{
             success: true,
             message: "Ladles filtered successfully.",
             data: filteredLadles
         });
     } catch (error) {
         console.error("ERROR /ladles/filterByLastCheckDate:", error);
-        return res.status(500).json({
+        return res.status(500).render("alert",{
             success: false,
             message: "Failed to filter ladles by LastCheckDate.",
             data: null
@@ -148,11 +149,33 @@ export const renderSingleLadlePage = async (req, res) => {
         const ladleInfo = await getLatestLadleInformation(ladleId);
 
         if (!ladleInfo) {
-            return res.status(404).json({ success: false, message: "Ladle not found.", data: null });
+            return res.status(404).render("oneLadle",{ success: false, message: "Ladle not found.", data: null });
         }
-        return res.status(200).json({ success: true, message: "Latest Ladle information fetched successfully.", data: ladleInfo });
+        // return res.status(200).json({ success: true, message: "Latest Ladle information fetched successfully.", data: ladleInfo });
+        return res.status(200).render("oneLadle",{ success: true, message: "Latest Ladle information fetched successfully.", data: ladleInfo });
     } catch (error) {
         console.error("ERROR /ladles/:id (GET):", error);
-        return res.status(500).json({ success: false, message: "Failed to fetch ladle information.", data: null });
+        return res.status(500).render("oneLadle",{ success: false, message: "Failed to fetch ladle information.", data: null });
     }
 }
+
+
+export const doInspection =  async (req, res) => {
+    try {
+        // const { LadleNo, WorkerEmail } = req.body;
+        const WorkerEmail = req.userEmail || "admin@gmail.com";
+        const LadleNo = req.params.id;
+
+        // Call the addMaintenanceRecord function to update LastCheckDate and add a maintenance record
+        const result = await addMaintenanceRecord(LadleNo, WorkerEmail);
+
+        // Send a success response
+        // res.status(200).json({ message: 'Inspection complete.', result });
+        res.redirect("/alert")
+    } catch (error) {
+        // Handle errors and send an error response
+        console.error("Error during inspection:", error);
+        // res.status(500).json({ error: 'Internal Server Error' });
+        res.redirect("login");
+    }
+};
