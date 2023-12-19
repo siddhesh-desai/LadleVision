@@ -159,6 +159,7 @@
             transition: background-color 0.3s ease;
             display: flex;
             justify-content: center;
+            color: white;
         }
 
         .point:nth-child(odd) {
@@ -229,6 +230,7 @@
             </ul>
         </div>
         <div class="main--content">
+            <% if(success) { %>
             <div class="overview">
                 <div class="title">
                     <h2 class="section--title">Ladle Details</h2>
@@ -272,7 +274,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                <h1>Live Ladle Location</h1>
                 <!-- Ladles Mapping -->
                 <div id="line-container">
                     <div class="point" id="point1"></div>
@@ -287,6 +289,9 @@
                 </div>
 
             </div>
+            <% } else { %>
+                <p><%=message%></p>
+            <% } %>
 
     </section>
 
@@ -354,7 +359,7 @@
         // Function to fetch data and update colors and text
         async function fetchDataAndUpdate() {
         try {
-            const response = await fetch("/ladles/latest/location/all");
+            const response = await fetch("/ladles/latest/<%=data?.LadleNo%>");
             const result = await response.json();
 
             if (result.success) {
@@ -362,28 +367,16 @@
                 resetText();
                 // console.log(result.data);
 
-                result.data.forEach((l, i) => {
-                    changeColor(l.Location, randomColors[i]);
-                    changeText(l.Location, l.LadleNo);
-                });
+                changeColor(result.data.Location, randomColors[16]);
+                changeText(result.data.Location, result.data.LadleNo);
             }
         } catch (error) {
             console.log(error);
         }
-        }
-
-        // Run the code every second
+    }
         setInterval(fetchDataAndUpdate, 100);
-        // let i = 1
-        // setInterval(() => {
-        //     resetColors();
-        //     if (i == 10) i = 1;
-        //     changeColor(i, 'red');
-        //     i++;
-        // }, 1000);
 
         
-
     </script>
 </body>
 

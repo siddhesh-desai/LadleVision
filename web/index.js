@@ -7,6 +7,7 @@ import frameRouter from "./routes/frame.js"
 import authRouter from "./routes/auth.js"
 import { requireAdminAuth, requireUserAuth } from "./middleware/auth.js";
 import adminRouter from "./routes/admin.js";
+import { getLadlesNeedInspection } from "./controller/ladle.js";
 
 
 dotenv.config();
@@ -36,6 +37,8 @@ app.get("/protected", requireAdminAuth, (req, res) => res.render("protected"))
 app.get("/dashboard", (req, res) => res.render("dashboard"))
 app.get("/allLadles", (req, res) => res.render("allLadles"))
 app.get("/oneLadle", (req, res) => res.render("oneLadle"))
+app.get("/alert", getLadlesNeedInspection)
+
 
 // Auth route
 app.use("/auth", authRouter);
