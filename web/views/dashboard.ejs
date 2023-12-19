@@ -72,7 +72,9 @@
             /* padding-top: 1rem; */
             margin-top: 2rem;
             /* background-color: #ff510086; */
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
         }
 
         #progressWala {
@@ -168,10 +170,19 @@
             width: 100%;
             /* Adjust the width as needed */
             height: 5px;
-            margin-top: 2rem;
+            margin-top: 4rem;
             /* Adjust the height as needed */
             background-color: #f0f0f0;
             /* Background color of the line */
+            display: flex;
+            justify-content: space-between;
+            bottom: 1rem;
+            align-items: center;
+        }
+        #text-container{
+            position: relative;
+            width: 100%;
+            /* height: 5px; */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -197,6 +208,15 @@
             height: 20px;
             background-color: rgb(223, 222, 222)
         }
+
+        #add-form{
+            /* width: 100%; */
+            width: 340px;
+            margin-top: 1rem;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
     </style>
 </head>
 
@@ -204,7 +224,9 @@
     <section class="header">
         <div class="logo">
             <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
-            <a href="/dashboard"> <h2>Ladle<span>Vision</span></h2></a>
+            <a href="/dashboard">
+                <h2>Ladle<span>Vision</span></h2>
+            </a>
         </div>
     </section>
 
@@ -308,28 +330,42 @@
                     <div class="point" id="point8"></div>
                     <div class="point" id="point9"></div>
                 </div>
+
+                <div id="text-container">
+                    <div >start</div>
+                    <div ></div>
+                    <div style="color: brown;" >SM 1</div>
+                    <div ></div>
+                    <div style="color: brown;">SM 2</div>
+                    <div ></div>
+                    <div style="color: brown;">SM 3</div>
+                    <div ></div>
+                    <div style="color: red;" >end</div>
+                </div>
             </div>
 
             <!-- //Recenet Verification Wala  -->
-            <h2 class="section--title">Add new Ladle</h2>
-            <form action="/ladles" style="margin-top: 1rem;" method="post">
+            <h2 class="section--title" style="margin-top: 3rem;">Add new Ladle</h2>
+            <form id="add-form" action="/ladles" method="post">
 
                 <div class="input-container">
                     <label for="ladleMadeYear">Ladle Number:</label>
-                    <input type="text" id="ladleMadeYear" name="LadleNo" placeholder="Enter Ladle Number" required/>
+                    <input type="text" id="ladleMadeYear" name="LadleNo" placeholder="Enter Ladle Number" required />
                 </div>
 
                 <div class="input-container">
                     <label for="ladleGrade">Ladle Grade:</label>
-                    <input type="text" id="ladleGrade" name="SteelGrade" placeholder="Enter Ladle Grade" required/>
+                    <input type="text" id="ladleGrade" name="SteelGrade" placeholder="Enter Ladle Grade" required />
                 </div>
 
                 <div class="input-container">
                     <label for="ladleMadeYear">Ladle Made Year:</label>
-                    <input type="text" id="ladleMadeYear" name="ManufYear" placeholder="Enter Ladle Made Year" required/>
+                    <input type="text" id="ladleMadeYear" name="ManufYear" placeholder="Enter Ladle Made Year"
+                        required />
                 </div>
-                
-                <button class="styled-button" style="background-color: #39C440; color: white;" type="submit">Add Ladle</button>
+
+                <button class="styled-button" style="background-color: #39C440; color: white;" type="submit">Add
+                    Ladle</button>
             </form>
         </div>
     </section>
@@ -347,26 +383,26 @@
 
     <script type="module">
         const randomColors = [
-        "#3498db",
-        "#e74c3c",
-        "#2ecc71",
-        "#f39c12",
-        "#9b59b6",
-        "#1abc9c",
-        "#e67e22",
-        "#3498db",
-        "#16a085",
-        "#c0392b",
-        "#2980b9",
-        "#f1c40f",
-        "#8e44ad",
-        "#27ae60",
-        "#d35400",
-        "#34495e",
-        "#e74c3c",
-        "#2c3e50",
-        "#f39c12",
-        "#7f8c8d"
+            "#3498db",
+            "#e74c3c",
+            "#2ecc71",
+            "#f39c12",
+            "#9b59b6",
+            "#1abc9c",
+            "#e67e22",
+            "#3498db",
+            "#16a085",
+            "#c0392b",
+            "#2980b9",
+            "#f1c40f",
+            "#8e44ad",
+            "#27ae60",
+            "#d35400",
+            "#34495e",
+            "#e74c3c",
+            "#2c3e50",
+            "#f39c12",
+            "#7f8c8d"
         ];
         function resetColors() {
             const points = document.querySelectorAll('.point');
@@ -408,23 +444,23 @@
 
         // Function to fetch data and update colors and text
         async function fetchDataAndUpdate() {
-        try {
-            const response = await fetch("/ladles/latest/location/all");
-            const result = await response.json();
-            console.log(result.data)
-            if (result.success) {
-                resetColors();
-                resetText();
-                // console.log(result.data);
+            try {
+                const response = await fetch("/ladles/latest/location/all");
+                const result = await response.json();
+                console.log(result.data)
+                if (result.success) {
+                    resetColors();
+                    resetText();
+                    // console.log(result.data);
 
-                result.data.forEach((l, i) => {
-                    changeColor(l.Location, randomColors[i]);
-                    changeText(l.Location, l.LadleNo);
-                });
+                    result.data.forEach((l, i) => {
+                        changeColor(l.Location, randomColors[i]);
+                        changeText(l.Location, l.LadleNo);
+                    });
+                }
+            } catch (error) {
+                console.log(error);
             }
-        } catch (error) {
-            console.log(error);
-        }
         }
 
         // Run the code every second
@@ -437,7 +473,7 @@
         //     i++;
         // }, 1000);
 
-        
+
 
     </script>
 </body>
