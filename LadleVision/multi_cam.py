@@ -23,13 +23,13 @@ cap3 = cv2.VideoCapture(0)
 address3 = "http://192.168.99.120:8080/video"
 cap3.open(address3)
 
-class_names = ['Ladle', 'Number']
+class_names = ['Number', 'Ladle', 'Ladle', 'Number', 'Ladle', 'Number']
 
 model = YOLO('Models/final_model.pt')
 reader = easyocr.Reader(['en'])
 
-width = 1440*4
-height = 270*4
+width = 1440 * 4
+height = 270 * 4
 num_frames = 3
 
 while True:
@@ -62,18 +62,19 @@ while True:
             conf = math.ceil(box.conf[0] * 100) / 100
             cls = int(box.cls[0])
 
-            if cls == 0:
+            if cls == 1 or cls == 2 or cls == 4:
                 cvzone.cornerRect(img, bbox)
                 cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
                 # print([57, datetime.now().timestamp(), w // (width / 2), 55, "L"])
-            elif cls == 1:
+            elif cls == 0 or cls == 3 or cls == 5:
                 cropped = img_og[y1:y2, x1:x2]
                 num_detected += reader.readtext(cropped, detail=0)
                 cvzone.cornerRect(img, bbox)
                 cvzone.putTextRect(img, f'{class_names[cls]} {conf}', (max(0, x1), max(20, y1 - 20)))
                 if num_detected and num_detected[0] in ['2', '3', '5', '6', '8']:
-                    print([int(num_detected[0]), datetime.now().timestamp(), int(x1 // (width / num_frames)), 55, "N"])
-                    # insert_into_table()
+                    print([int(num_detected[0]), int(x1 // (width / num_frames)), 55])
+                    # print([int(num_detected[0]), datetime.now().timestamp(), int(x1 // (width / num_frames)), 55, "N"])
+                    insert_into_table(int(num_detected[0]), int(x1 // (width / num_frames)), 32)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)

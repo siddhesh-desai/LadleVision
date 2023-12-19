@@ -1,12 +1,17 @@
 import mysql.connector
 
 
-def insert_into_table():
+# LadleNo = 5
+# Location = 9
+# Temperature = 25
+
+
+def insert_into_table(LadleNo, Location, Temperature):
     # Replace these with your actual MySQL server credentials
     host = '127.0.0.1'
     user = 'root'
     password = '9673497497'
-    database_to_change_to = 'bank'
+    database_to_change_to = 'ladle_vision'
 
     # Connect to the MySQL server
     conn = mysql.connector.connect(host=host, user=user, password=password)
@@ -16,12 +21,16 @@ def insert_into_table():
 
     try:
         # Use the desired database
-        cursor.execute(f"USE {database_to_change_to}")
+        cursor.execute(f"USE {database_to_change_to};")
 
         # Your SQL queries within the specified database
         # For example, you can execute a SELECT query
-        cursor.execute("INSERT INTO customers VALUES (3, 'Samarth', 1234567891, 100)")
+
+        cursor.execute(f"INSERT INTO frame (LadleNo, Temperature, Location) VALUES ({LadleNo}, {Location} , {Temperature});")
+        # print(LadleNo)
         conn.commit()
+
+        # print(LadleNo)
 
         # Fetch and print the results
         # results = cursor.fetchall()
@@ -35,3 +44,6 @@ def insert_into_table():
         # Close the cursor and connection
         cursor.close()
         conn.close()
+
+
+# insert_into_table(5, 9.3, 25)
