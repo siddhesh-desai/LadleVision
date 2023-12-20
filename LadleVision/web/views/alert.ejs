@@ -160,7 +160,7 @@
         .styled-btn {
         font-size: 16px;
         color: #fff;
-        background-color: #39c440;
+        background-color: #539e43;
         padding: 8px;
         border: none;
         border-radius: 5px;
@@ -171,6 +171,19 @@
       .styled-button:hover {
         background-color: #2980b9;
       }
+
+      .card-notify {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 18px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
     </style>
   </head>
 
@@ -200,19 +213,23 @@
             </a>
           </li>
           <li>
+            <a href="/halt">
+              <span class="icon icon-2"><i class="ri-stop-circle-fill" style="color: rgb(219, 75, 75);"></i></span>
+              <span class="sidebar--item">Halts</span>
+            </a>
+          </li>
+          <li>
             <a href="/alert" id="active--link">
-              <span class="icon icon-4"><i class="ri-user-line"></i></span>
+              <span class="icon icon-4"><i class="ri-notification-3-line"></i></span>
               <span class="sidebar--item">Notifications</span>
             </a>
           </li>
           <li>
             <a href="/ladles/maintainance">
-              <span class="icon icon-5"
-                ><i class="ri-line-chart-line"></i
-              ></span>
-              <span class="sidebar--item">Maintenance</span>
+                <span class="icon icon-5"><i class="ri-database-2-fill"></i></span>
+                <span class="sidebar--item">Maintenance</span>
             </a>
-          </li>
+        </li>
           <li>
             <a href="/statistics">
               <span class="icon icon-5"
@@ -221,6 +238,14 @@
               <span class="sidebar--item">Statistics</span>
             </a>
           </li>
+          <li>
+            <a href="/ladles/download">
+              <span class="icon icon-5"
+                ><i class="ri-file-download-fill" style="color: rgb(90, 90, 150);"></i></span>
+              <span class="sidebar--item">Exports</span>
+            </a>
+          </li>
+          
         </ul>
         <ul class="sidebar--bottom-items">
           <li>
@@ -244,7 +269,7 @@
             <% } else {%>
                 <% for(let i=0; i<data.length; i++) { %>
                     <div class="card-notify">
-                        <div>Ladle number <%= data[i].LadleNo %> needs to be fixed.</div>
+                        <div>Ladle number <%= data[i].LadleNo %> needs to be checked.</div>
                         <a href="/ladles/inspect/<%=data[i].LadleNo%>" class="styled-btn">Inspect</a>
                     </div>
                 <% } %>

@@ -149,6 +149,12 @@
                 </a>
               </li>
               <li>
+                <a href="/halt">
+                  <span class="icon icon-2"><i class="ri-stop-circle-fill" style="color: rgb(219, 75, 75);"></i></span>
+                  <span class="sidebar--item">Halts</span>
+                </a>
+              </li>
+              <li>
                 <a href="/alert">
                   <span class="icon icon-4"><i class="ri-user-line"></i></span>
                   <span class="sidebar--item">Notifications</span>
@@ -169,6 +175,13 @@
                   <span class="sidebar--item">Statistics</span>
                 </a>
               </li>
+              <li>
+                <a href="/ladles/download">
+                  <span class="icon icon-5"
+                    ><i class="ri-file-download-fill" style="color: rgb(90, 90, 150);"></i></span>
+                  <span class="sidebar--item">Exports</span>
+                </a>
+              </li>
             </ul>
             <ul class="sidebar--bottom-items">
               <li>
@@ -185,7 +198,7 @@
           <div class="overview">
               <% if(success) {%>
                 <div class="title">
-                    <h2 class="section--title">Ladle Details</h2>
+                    <h2>Maintenance Details</h2>
                     
                 </div>
                 <br>
@@ -195,8 +208,8 @@
                       <thead>
                         <tr>
                           <th>Ladle No.</th>
-                          <th>Maintain By</th>
-                          <th>Maintainance Date</th>
+                          <th>Maintained By</th>
+                          <th>Maintenance Date</th>
                         </tr>
                       </thead>
                       <tbody>

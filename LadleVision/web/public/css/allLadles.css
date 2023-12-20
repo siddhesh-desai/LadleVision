@@ -583,3 +583,36 @@ th {
         padding: 10px;
     }
 }
+
+.card-3 {
+    background-color: rgba(112, 215, 165, .1);
+    border: #39c440;
+    border-radius: 1cap;
+    padding: 2rem;
+    width: 16rem;
+}
+.card h1 {
+    font-size: 48px;
+    margin-top: 10px;
+}
+
+.details {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    /* margin: 14px 0; */
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    /* margin-top: 60rem; */
+    margin-left: 2rem;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.card--data {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}

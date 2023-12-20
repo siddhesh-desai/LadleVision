@@ -167,6 +167,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            font-size: 1.2rem;
         }
 
         .styled-btn {
@@ -189,59 +190,89 @@
 <body>
     <section class="header">
         <div class="logo">
-            <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
-            <a href="/dashboard">
-                <h2>Ladle<span>Vision</span></h2>
-            </a>
+          <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
+          <a href="/dashboard">
+            <h2>Ladle<span>Vision</span></h2>
+          </a>
         </div>
-    </section>
+      </section>
 
     <section class="main">
         <div class="sidebar">
             <ul class="sidebar--items">
-                <li>
-                    <a href="/dashboard">
-                        <span class="icon icon-1"><i class="ri-layout-grid-line"></i></span>
-                        <span class="sidebar--item">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/ladles/allLadles">
-                        <span class="icon icon-2"><i class="ri-user-line"></i></span>
-                        <span class="sidebar--item">View Ladles</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/alert">
-                        <span class="icon icon-4"><i class="ri-user-line"></i></span>
-                        <span class="sidebar--item">Notifications</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/halt" id="active--link">
-                        <span class="icon icon-4"><i class="ri-user-line"></i></span>
-                        <span class="sidebar--item">Halt Ladle</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/ladles/maintainance">
-                        <span class="icon icon-5"><i class="ri-line-chart-line"></i></span>
-                        <span class="sidebar--item">Maintenance</span>
-                    </a>
-                </li>
+              <li>
+                <a href="/dashboard" >
+                  <span class="icon icon-1"
+                    ><i class="ri-layout-grid-line"></i
+                  ></span>
+                  <span class="sidebar--item">Dashboard</span>
+                </a>
+              </li>
+              <li>
+                <a href="/ladles/allLadles">
+                  <span class="icon icon-2"><i class="ri-user-line"></i></span>
+                  <span class="sidebar--item">View Ladles</span>
+                </a>
+              </li>
+              <li>
+                <a href="/halt" id="active--link">
+                  <span class="icon icon-2"><i class="ri-stop-circle-fill" style="color: rgb(219, 75, 75);"></i></span>
+                  <span class="sidebar--item">Halts</span>
+                </a>
+              </li>
+              <li>
+                <a href="/alert">
+                  <span class="icon icon-4"
+                    ><i class="ri-notification-3-line"></i
+                  ></span>
+                  <span class="sidebar--item">Notifications</span>
+                </a>
+              </li>
+              <li>
+                <a href="/ladles/maintainance">
+                  <span class="icon icon-5"
+                    ><i class="ri-database-2-fill"></i
+                  ></span>
+                  <span class="sidebar--item">Maintenance</span>
+                </a>
+              </li>
+              <li>
+                <a href="/statistics">
+                  <span class="icon icon-5"
+                    ><i class="ri-line-chart-line"></i
+                  ></span>
+                  <span class="sidebar--item">Statistics</span>
+                </a>
+              </li>
+              <li>
+                <a href="/ladles/download">
+                  <span class="icon icon-5"
+                    ><i class="ri-file-download-fill" style="color: rgb(90, 90, 150);"></i></span>
+                  <span class="sidebar--item">Exports</span>
+                </a>
+              </li>
             </ul>
             <ul class="sidebar--bottom-items">
-                <li>
-                    <a href="/auth/logout">
-                        <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
-                        <span class="sidebar--item">Logout</span>
-                    </a>
-                </li>
+              <!-- <li>
+                        <a href="#">
+                            <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
+                            <span class="sidebar--item">Settings</span>
+                        </a>
+                    </li> -->
+              <li>
+                <a href="/auth/logout">
+                  <span class="icon icon-8"
+                    ><i class="ri-logout-box-r-line"></i
+                  ></span>
+                  <span class="sidebar--item">Logout</span>
+                </a>
+              </li>
             </ul>
-        </div>
+          </div>
+
         <div class="main--content">
             <br><br>
-            <h1>Halt Ladle</h1>
+            <h1>Halted Ladles</h1>
             <br><br>
             <div id="cardContainer"></div>
             <!-- Container to display halted ladles dynamically -->
