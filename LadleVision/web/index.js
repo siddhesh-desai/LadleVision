@@ -71,13 +71,13 @@ app.get("/statistics",requireAdminAuth,(req,res)=> res.render("statistics"))
 app.use("/auth", authRouter);
 
 // Ladels route
-app.use("/ladles", ladleRouter);
+app.use("/ladles",requireAdminAuth, ladleRouter);
 
 // Frame route
-app.use("/frames", frameRouter);
+app.use("/frames",requireAdminAuth, frameRouter);
 
 // Admin route
-app.use("/admin", adminRouter);
+// app.use("/admin", adminRouter);
 
 
 app.listen(port, console.log(`Listening on port ${port}`));
