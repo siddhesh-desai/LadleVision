@@ -8,6 +8,9 @@ import authRouter from "./routes/auth.js"
 import { requireAdminAuth, requireUserAuth } from "./middleware/auth.js";
 import adminRouter from "./routes/admin.js";
 import { getLadlesNeedInspection } from "./controller/ladle.js";
+import { getAllLadles } from "./db/ladle.js";
+import { getAllUsers } from "./db/user.js";
+import moment from "moment";
 
 
 dotenv.config();
@@ -36,7 +39,26 @@ app.get("/register", (req, res) => res.render("register", {message: null}))
 app.get("/protected", requireAdminAuth, (req, res) => res.render("protected"))
 
 
-app.get("/dashboard",requireAdminAuth,(req, res) => res.render("dashboard"))
+app.get("/dashboard",requireAdminAuth, async (req, res) => {
+    const ladles = await getAllLadles();
+    const worker = await getAllUsers();
+
+     // Filter ladles based on the difference between LastCheckDate and the current date
+     const filteredLadles = ladles.filter((ladle) => {
+         const lastCheckDate = moment(ladle.LastCheckDate);
+         const currentDate = moment();
+
+         // Calculate the difference in days
+         // const differenceInDays = currentDate.diff(lastCheckDate, 'days');
+         const differenceInDays = currentDate.diff(lastCheckDate, 'minutes');
+
+         // Return ladles with a difference greater than or equal to 1 day
+         return differenceInDays >= 1;
+     });
+
+
+    res.render("dashboard", {noWorker: worker.length, noLadle: ladles.length, noInspect: filteredLadles.length})
+})
 
 app.get("/oneLadle", requireAdminAuth,(req, res) => res.render("oneLadle"))
 app.get("/alert", requireAdminAuth,getLadlesNeedInspection)

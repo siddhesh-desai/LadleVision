@@ -19,3 +19,13 @@ export async function getUserByEmail(email) {
 
     return rows[0];
 }
+
+// export async function getAllFrames() {
+//     const [rows] = await pool.query("SELECT * FROM frame");
+//     return rows;
+//   }
+  
+export async function getAllUsers(){
+    const [rows] = await pool.query("SELECT * FROM frame");
+    return rows;
+}
