@@ -16,7 +16,7 @@ Hot metal, Steel Ladle, and Scrap pot Tracking by auto-capturing the Ladle numbe
 - Here is a demonstration video of LadleVision in action:
 
    <video width="600" controls>
-     <source src="media/demo.mp4" type="video/mp4">
+     <source src="https://youtu.be/3QNf6KCKrzU">
      Your browser does not support the video tag.
    </video>
 
