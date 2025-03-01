@@ -134,8 +134,8 @@
             display: flex;
         }
 
-        /* ====================== */
-        #line-container {
+          /* ====================== */
+          #line-container {
             position: relative;
             width: 100%;
             /* Adjust the width as needed */
@@ -170,7 +170,7 @@
             background-color: rgb(223, 222, 222)
         }
 
-        #text-container {
+        #text-container{
             position: relative;
             width: 100%;
             height: 50px;
@@ -179,21 +179,13 @@
             align-items: center;
         }
     </style>
-    <script type="text/javascript">
-        window.history.forward();
-        function noBack() {
-            window.history.forward();
-        } 
-    </script>
 </head>
 
 <body>
     <section class="header">
         <div class="logo">
             <!-- <i class="ri-menu-line icon icon-0 menu"></i> -->
-            <a href="/dashboard">
-                <h2>Ladle<span>Vision</span></h2>
-            </a>
+            <a href="/dashboard"> <h2>Ladle<span>Vision</span></h2></a>
         </div>
     </section>
 
@@ -213,37 +205,25 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/halt">
-                      <span class="icon icon-2"><i class="ri-stop-circle-fill" style="color: rgb(219, 75, 75);"></i></span>
-                      <span class="sidebar--item">Halts</span>
-                    </a>
-                  </li>
-                  <li>
                     <a href="/alert">
-                      <span class="icon icon-4"><i class="ri-notification-3-line"></i></span>
-                      <span class="sidebar--item">Notifications</span>
+                        <span class="icon icon-4"><i class="ri-user-line"></i></span>
+                        <span class="sidebar--item">Notifications</span>
                     </a>
-                  </li>
+                </li>
                 <li>
                     <a href="/ladles/maintainance">
-                      <span class="icon icon-5"><i class="ri-database-2-fill"></i></span>
-                      <span class="sidebar--item">Maintenance</span>
+                        <span class="icon icon-5"><i class="ri-line-chart-line"></i></span>
+                        <span class="sidebar--item">Maintenance</span>
                     </a>
-                  </li>
-                  <li>
-                    <a href="/statistics">
-                      <span class="icon icon-5"><i class="ri-line-chart-line"></i></span>
-                      <span class="sidebar--item">Statistics</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/ladles/download">
-                      <span class="icon icon-5"><i class="ri-file-download-fill" style="color: rgb(90, 90, 150);"></i></span>
-                      <span class="sidebar--item">Exports</span>
-                    </a>
-                  </li>
+                </li>
             </ul>
             <ul class="sidebar--bottom-items">
+                <!-- <li>
+                        <a href="#">
+                            <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
+                            <span class="sidebar--item">Settings</span>
+                        </a>
+                    </li> -->
                 <li>
                     <a href="/auth/logout">
                         <span class="icon icon-8"><i class="ri-logout-box-r-line"></i></span>
@@ -254,106 +234,104 @@
         </div>
         <div class="main--content">
             <% if(success) { %>
-                <div class="overview">
-                    <div class="title">
-                        <h2 class="section--title">Ladle Details</h2>
-
-                    </div>
-                    <br>
-                    <div class="table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Ladle</th>
-                                    <th>Ladle Info.</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Ladle No. </td>
-                                    <td>
-                                        <%=data.LadleNo%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Steel Grade</td>
-                                    <td>
-                                        <%=data.SteelGrade%>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Temprature</td>
-                                    <td style="color: red;">
-                                        <%=data.Temperature%> K
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Last Inspection Date</td>
-                                    <td>
-                                        <%=data.LastCheckDate%>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <h1>Live Ladle Location</h1>
-                    <!-- Ladles Mapping -->
-                    <div id="line-container">
-                        <div class="point" id="point1"></div>
-                        <div class="point" id="point2"></div>
-                        <div class="point" id="point3"></div>
-                        <div class="point" id="point4"></div>
-                        <div class="point" id="point5"></div>
-                        <div class="point" id="point6"></div>
-                        <div class="point" id="point7"></div>
-                        <div class="point" id="point8"></div>
-                        <div class="point" id="point9"></div>
-                    </div>
-
-                    <div id="text-container">
-                        <div>Start</div>
-                        <div></div>
-                        <div style="color: brown;">SMS 1</div>
-                        <div></div>
-                        <div style="color: brown;">SMS 2</div>
-                        <div></div>
-                        <div style="color: brown;">SMS 3</div>
-                        <div></div>
-                        <div style="color: red;">End</div>
-                    </div>
+            <div class="overview">
+                <div class="title">
+                    <h2 class="section--title">Ladle Details</h2>
 
                 </div>
-                <% } else { %>
-                    <p>
-                        <%=message%>
-                    </p>
-                    <% } %>
+                <br>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ladle</th>
+                                <th>Ladle Info.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ladle No. </td>
+                                <td>
+                                    <%=data.LadleNo%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Steel Grade</td>
+                                <td>
+                                    <%=data.SteelGrade%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Temprature</td>
+                                <td style="color: red;">
+                                    <%=data.Temperature%> K
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Last Inspection Date</td>
+                                <td>
+                                    <%=data.LastCheckDate%>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <h1>Live Ladle Location</h1>
+                <!-- Ladles Mapping -->
+                <div id="line-container">
+                    <div class="point" id="point1"></div>
+                    <div class="point" id="point2"></div>
+                    <div class="point" id="point3"></div>
+                    <div class="point" id="point4"></div>
+                    <div class="point" id="point5"></div>
+                    <div class="point" id="point6"></div>
+                    <div class="point" id="point7"></div>
+                    <div class="point" id="point8"></div>
+                    <div class="point" id="point9"></div>
+                </div>
+
+                <div id="text-container">
+                    <div >Start</div>
+                    <div ></div>
+                    <div style="color: brown;" >SMS 1</div>
+                    <div ></div>
+                    <div style="color: brown;">SMS 2</div>
+                    <div ></div>
+                    <div style="color: brown;">SMS 3</div>
+                    <div ></div>
+                    <div style="color: red;" >End</div>
+                </div>
+
+            </div>
+            <% } else { %>
+                <p><%=message%></p>
+            <% } %>
 
     </section>
 
     <script type="module">
         const randomColors = [
-            "#3498db",
-            "#e74c3c",
-            "#2ecc71",
-            "#f39c12",
-            "#9b59b6",
-            "#1abc9c",
-            "#e67e22",
-            "#3498db",
-            "#16a085",
-            "#c0392b",
-            "#2980b9",
-            "#f1c40f",
-            "#8e44ad",
-            "#27ae60",
-            "#d35400",
-            "#34495e",
-            "#e74c3c",
-            "#2c3e50",
-            "#f39c12",
-            "#7f8c8d"
+        "#3498db",
+        "#e74c3c",
+        "#2ecc71",
+        "#f39c12",
+        "#9b59b6",
+        "#1abc9c",
+        "#e67e22",
+        "#3498db",
+        "#16a085",
+        "#c0392b",
+        "#2980b9",
+        "#f1c40f",
+        "#8e44ad",
+        "#27ae60",
+        "#d35400",
+        "#34495e",
+        "#e74c3c",
+        "#2c3e50",
+        "#f39c12",
+        "#7f8c8d"
         ];
         function resetColors() {
             const points = document.querySelectorAll('.point');
@@ -395,24 +373,24 @@
 
         // Function to fetch data and update colors and text
         async function fetchDataAndUpdate() {
-            try {
-                const response = await fetch("/ladles/latest/<%=data?.LadleNo%>");
-                const result = await response.json();
+        try {
+            const response = await fetch("/ladles/latest/<%=data?.LadleNo%>");
+            const result = await response.json();
 
-                if (result.success) {
-                    resetColors();
-                    resetText();
-                    // console.log(result.data);
+            if (result.success) {
+                resetColors();
+                resetText();
+                // console.log(result.data);
 
-                    changeColor(result.data.Location, randomColors[16]);
-                    changeText(result.data.Location, result.data.LadleNo);
-                }
-            } catch (error) {
-                console.log(error);
+                changeColor(result.data.Location, randomColors[16]);
+                changeText(result.data.Location, result.data.LadleNo);
             }
+        } catch (error) {
+            console.log(error);
         }
-        setInterval(fetchDataAndUpdate, 100);
-
+    }
+    setInterval(fetchDataAndUpdate, 100);
+        
     </script>
 </body>
 

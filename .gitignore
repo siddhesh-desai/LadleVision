@@ -1,7 +1,2 @@
-.idea
-/Augmentation/
-/Basics/
-/Images/
-/Models/
-/Videos/
-main.py
+node_modules
+.env
