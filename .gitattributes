@@ -1,2 +1,10 @@
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.pt filter=lfs diff=lfs merge=lfs -text
+media/demo.mp4 filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Module_1/Models/ladle_model.pt filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Module_1/Models/model_1.pt filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Models/prototype_model.pt filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Models/pro_model_aug.pt filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Models/model_1.pt filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Models/final_model.pt filter=lfs diff=lfs merge=lfs -text
+LadleVisionML/Models/final_ladle_proto.pt filter=lfs diff=lfs merge=lfs -text
