@@ -15,10 +15,7 @@ Hot metal, Steel Ladle, and Scrap pot Tracking by auto-capturing the Ladle numbe
 
 - Here is a demonstration video of LadleVision in action:
 
-   <video width="600" controls>
-     <source src="https://youtu.be/3QNf6KCKrzU">
-     Your browser does not support the video tag.
-   </video>
+  [![Watch the video](https://img.youtube.com/vi/3QNf6KCKrzU/maxresdefault.jpg)](https://youtu.be/3QNf6KCKrzU)
 
 - LadleVision relies on image processing and computer vision to detect and track ladles.
 - Cameras are strategically placed to capture ladle images, and optical character recognition (OCR) identifies ladle numbers.
